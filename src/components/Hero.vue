@@ -65,9 +65,9 @@
                                 class="status-card absolute bottom-8 left-8 right-8 bg-black/40 backdrop-blur-xl border border-white/10 p-6 rounded-[2rem]">
                                 <div class="flex items-center justify-between">
                                     <div>
-                                        <p class="text-[10px] uppercase tracking-widest text-gray-400 mb-1">Current
-                                            Focus</p>
-                                        <h4 class="text-lg font-bold">Vue 3 + GSAP</h4>
+                                        <p class="text-[10px] uppercase tracking-widest text-gray-400 mb-1">Ashikur
+                                            Rahman</p>
+                                        <h4 class="text-lg font-bold">Junior Software Developer</h4>
                                     </div>
                                     <div
                                         class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-dark">
