@@ -3,12 +3,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center">
-                    <a href="#" class="flex items-center gap-2 group">
-                        <div
-                            class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center rotate-3 group-hover:rotate-0 transition-transform">
-                            <span class="text-dark font-bold text-xl">P</span>
-                        </div>
-                        <span class="text-2xl font-bold tracking-tight">Portfolio</span>
+                    <a href="#">
+                        <Logo />
                     </a>
                 </div>
 
@@ -31,6 +27,7 @@
 
 <script setup>
 import { onMounted, ref } from 'vue'
+import Logo from './Logo.vue'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
