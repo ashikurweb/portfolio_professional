@@ -26,8 +26,8 @@
                     </h1>
 
                     <p class="hero-desc text-xl text-gray-400 mb-12 max-w-xl leading-relaxed mx-auto lg:mx-0 opacity-0">
-                        I am Alex Morgan, a creative developer pushing the boundaries of what's possible in the modern
-                        web.
+                        I am Ashikur, a software engineer and UI/UX innovator crafting high-performance digital
+                        solutions.
                     </p>
 
                     <div class="hero-btns flex flex-wrap items-center justify-center lg:justify-start gap-6 opacity-0">
@@ -57,7 +57,7 @@
 
                         <div
                             class="image-wrapper relative aspect-[4/5] rounded-[3rem] overflow-hidden border border-white/10 bg-[#121829] shadow-[0_0_50px_rgba(0,0,0,0.5)]">
-                            <img src="/assets/hero.png" alt="Alex Morgan"
+                            <img src="/assets/hero.png" alt="Ashikur"
                                 class="hero-img w-full h-full object-cover grayscale brightness-75 hover:grayscale-0 hover:brightness-100 transition-all duration-700 cursor-pointer" />
 
                             <!-- Real-time Status Card -->
@@ -65,9 +65,9 @@
                                 class="status-card absolute bottom-8 left-8 right-8 bg-black/40 backdrop-blur-xl border border-white/10 p-6 rounded-[2rem]">
                                 <div class="flex items-center justify-between">
                                     <div>
-                                        <p class="text-[10px] uppercase tracking-widest text-gray-400 mb-1">Ashikur
-                                            Rahman</p>
-                                        <h4 class="text-lg font-bold">Junior Software Developer</h4>
+                                        <p class="text-[10px] uppercase tracking-widest text-primary mb-1">Developer
+                                            Identity</p>
+                                        <h4 class="text-lg font-bold">Ashikur Rahman</h4>
                                     </div>
                                     <div
                                         class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-dark">
