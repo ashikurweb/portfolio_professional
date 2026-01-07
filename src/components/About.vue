@@ -1,82 +1,124 @@
 <template>
     <section id="about" ref="aboutRef" class="relative bg-[#020408] text-white py-0 overflow-hidden">
-        <!-- Section 1: The Narrative Intro -->
+        <!-- Section 1: The Technical Architect DNA (New Strategic Intro) -->
         <div
-            class="min-h-screen relative flex items-center justify-center pt-20 pb-40 px-6 sm:px-12 lg:px-24 overflow-hidden manifesto-container">
-            <!-- Dynamic Background Glows -->
-            <div
-                class="absolute top-1/4 -left-20 w-[600px] h-[600px] bg-primary/5 blur-[120px] rounded-full pointer-events-none animate-pulse bg-focal">
-            </div>
-            <div
-                class="absolute bottom-1/4 -right-20 w-[400px] h-[400px] bg-primary/5 blur-[150px] rounded-full pointer-events-none">
+            class="min-h-screen relative flex items-center justify-center pt-20 pb-40 px-6 overflow-hidden dna-section bg-[#020408]">
+            <!-- Kinetic Data Particles -->
+            <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-20">
+                <div v-for="i in 15" :key="i" class="data-particle absolute bg-primary/20 rounded-full" :style="{
+                    width: Math.random() * 3 + 'px',
+                    height: Math.random() * 3 + 'px',
+                    top: Math.random() * 100 + '%',
+                    left: Math.random() * 100 + '%',
+                    animation: `float ${Math.random() * 10 + 10}s linear infinite`
+                }"></div>
             </div>
 
-            <div class="max-w-7xl w-full relative z-10">
-                <div class="grid lg:grid-cols-[1.3fr_1fr] gap-20 items-center">
-                    <div class="space-y-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-[1.2fr_1fr] gap-20 items-center">
+                    <!-- Left: High-Impact Vision -->
+                    <div class="space-y-16">
                         <div class="space-y-6">
-                            <div class="flex items-center gap-4 manifesto-reveal opacity-0 -translate-y-10">
-                                <div class="w-12 h-[1px] bg-primary/30"></div>
+                            <div class="flex items-center gap-4 reveal-dna opacity-0 -translate-x-10">
+                                <span class="w-12 h-[1px] bg-primary/40"></span>
                                 <span
-                                    class="text-[10px] font-black tracking-[0.5em] uppercase text-primary italic">System_User:
-                                    Ashikur_Rahman_v4.1</span>
+                                    class="text-[10px] font-mono font-black text-primary tracking-[0.6em] uppercase animate-pulse">//
+                                    STRATEGIC_IDENTITY_v5.0</span>
                             </div>
 
                             <h2
-                                class="text-7xl md:text-[11rem] font-black leading-[0.8] tracking-tighter uppercase relative">
-                                <div class="overflow-hidden pb-4">
-                                    <span class="block m-line translate-y-full">CODE_IS</span>
+                                class="text-6xl md:text-[11rem] font-black leading-none tracking-tighter uppercase relative mission-title">
+                                <div class="overflow-hidden">
+                                    <span class="block dna-line translate-y-full italic">SCALING</span>
                                 </div>
                                 <div class="overflow-hidden">
-                                    <span class="block m-line translate-y-full italic text-primary">ARCHITECTURE</span>
+                                    <span class="block dna-line translate-y-full text-primary">IDEAS</span>
                                 </div>
                             </h2>
                         </div>
 
-                        <!-- Summary Bio -->
-                        <div class="max-w-2xl manifesto-reveal opacity-0 translate-y-10">
-                            <p
-                                class="text-3xl md:text-5xl font-bold leading-[1.2] text-white/40 tracking-tight bio-text-reveal">
-                                I am a <span class="text-white">Software Engineer</span> at Codeshaper, specializing in
-                                <span class="text-white italic">modern web applications</span> and backend architecture.
-                            </p>
+                        <p
+                            class="text-2xl md:text-4xl font-bold leading-tight text-white/40 italic max-w-2xl reveal-dna opacity-0">
+                            I am a <span class="text-white">Software Engineer</span> at Codeshaper, bridging the gap
+                            between <span class="text-white italic">complex logic</span> and fluid interfaces.
+                        </p>
+
+                        <!-- Live System Metrics -->
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-8 pt-8">
+                            <div v-for="(stat, idx) in impactStats" :key="idx"
+                                class="p-8 bg-white/[0.02] border border-white/5 rounded-[2.5rem] reveal-dna opacity-0 translate-y-10 group hover:border-primary/30 transition-all duration-700">
+                                <span
+                                    class="block text-[9px] font-mono text-white/20 uppercase tracking-[0.3em] mb-4">{{
+                                        stat.label }}</span>
+                                <div class="flex items-end gap-2 text-4xl font-black italic text-white font-mono">
+                                    <span class="stat-value" :data-target="stat.val">0</span>
+                                    <span class="text-primary text-sm font-mono mb-2">{{ stat.suffix }}</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Right: Quick Facts Hub -->
-                    <div class="manifesto-reveal opacity-0 translate-x-10 hidden lg:block">
+                    <!-- Right: The Archive Vault HUD -->
+                    <div class="hidden lg:block relative reveal-dna opacity-0 translate-x-20">
                         <div
-                            class="p-12 bg-white/[0.02] border border-white/5 rounded-[4rem] backdrop-blur-3xl space-y-10 group hover:border-primary/20 transition-all duration-1000">
-                            <div class="space-y-2">
-                                <h4 class="text-[10px] font-black text-primary uppercase tracking-[0.4em] mb-10">//
-                                    QUICK_FACTS_PROFILE</h4>
-                                <div class="space-y-5 text-sm">
-                                    <div v-for="fact in quickFacts" :key="fact.label"
-                                        class="flex items-center gap-4 border-b border-white/5 pb-4 last:border-0">
-                                        <component :is="fact.icon" size="16" class="text-primary/60" />
-                                        <div class="flex flex-col">
-                                            <span class="text-[9px] text-white/20 uppercase tracking-widest">{{
-                                                fact.label }}</span>
-                                            <span class="font-bold text-white/90">{{ fact.value }}</span>
-                                        </div>
+                            class="p-16 bg-white/[0.02] border border-white/10 rounded-[5rem] backdrop-blur-3xl relative overflow-hidden group">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000">
+                            </div>
+
+                            <!-- Internal HUD Scanlines -->
+                            <div
+                                class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:100%_4px] pointer-events-none">
+                            </div>
+
+                            <div class="space-y-12 relative z-10">
+                                <div class="flex items-center justify-between border-b border-white/5 pb-8">
+                                    <h4 class="text-[10px] font-black text-primary uppercase tracking-[0.4em]">//
+                                        ARCHIVE_CONTROL</h4>
+                                    <div class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">
+                                        <span class="text-[8px] font-black text-primary animate-pulse">LIVE_SYNC</span>
                                     </div>
                                 </div>
-                            </div>
-                            <div
-                                class="pt-2 flex items-center justify-between text-white/10 text-[9px] font-mono tracking-widest uppercase">
-                                <span class="flex items-center gap-2 animate-pulse">
-                                    <div class="w-1.5 h-1.5 rounded-full bg-primary"></div> STATUS: OPTIMIZING
-                                </span>
-                                <span>v4.1.0</span>
+
+                                <div class="space-y-6">
+                                    <div v-for="(item, i) in archiveItems" :key="i"
+                                        class="p-8 bg-white/[0.03] rounded-[2.5rem] border border-white/5 hover:border-primary/20 transition-all duration-700 group/item flex items-center justify-between">
+                                        <div class="flex items-center gap-6">
+                                            <div
+                                                class="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-primary group-hover/item:bg-primary group-hover/item:text-dark transition-all duration-700">
+                                                <component :is="item.icon" size="24" stroke-width="1.5" />
+                                            </div>
+                                            <div>
+                                                <h5 class="text-lg font-black uppercase italic">{{ item.title }}</h5>
+                                                <p
+                                                    class="text-[9px] text-white/20 uppercase tracking-widest mt-1 italic">
+                                                    {{ item.sub }}</p>
+                                            </div>
+                                        </div>
+                                        <ChevronRightIcon size="20"
+                                            class="text-white/10 group-hover/item:text-primary transition-colors group-hover/item:translate-x-2 duration-500" />
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="pt-8 flex items-center justify-between text-white/10 text-[9px] font-mono tracking-widest uppercase italic border-t border-white/5">
+                                    <span>Core_Stable</span>
+                                    <span>Architecture_v5.0</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Kinetic Indicator -->
             <div
-                class="absolute bottom-10 left-10 md:left-24 rotate-[-90deg] origin-left text-[10px] font-mono tracking-[0.5em] text-white/10 uppercase italic hidden sm:block">
-                SCROLL_TO_ACCESS_SYSTEM_DATA
+                class="absolute bottom-10 left-10 md:left-auto md:right-24 flex items-center gap-6 text-white/10 group">
+                <div
+                    class="w-20 h-[1px] bg-white/10 group-hover:w-32 group-hover:bg-primary transition-all duration-1000">
+                </div>
+                <span
+                    class="text-[9px] font-mono tracking-[0.6em] uppercase group-hover:text-primary transition-colors">ACCESS_SYSTEM_CORE</span>
             </div>
         </div>
 
@@ -545,14 +587,16 @@ const process = [
     { title: 'Evolution_Loop', desc: 'Continuous loop monitoring and feedback-driven refinement for longevity.', icon: ActivityIcon },
 ]
 
-const quickFacts = [
-    { label: 'ROLE', value: 'Software Engineer @ CodeShaper', icon: Building2Icon },
-    { label: 'BASE', value: 'Dhaka, Bangladesh', icon: MapPinIcon },
-    { label: 'TECH', value: '1 Year Experience', icon: LaptopIcon },
-    { label: 'PASSION', value: 'Clean Code & Modern Design', icon: PaletteIcon },
-    { label: 'GROWTH', value: 'Mastering React.js & JS', icon: LeafIcon },
-    { label: 'SKILL', value: 'Solving Complex Problems', icon: SwordsIcon },
-    { label: 'MISSION', value: 'Impactful Applications', icon: GoalIcon },
+const impactStats = [
+    { label: 'Syste_Logic_Efficiency', val: 99, suffix: '%' },
+    { label: 'Application_Scaling', val: 50, suffix: '+' },
+    { label: 'Uptime_Reliability', val: 100, suffix: '%' },
+]
+
+const archiveItems = [
+    { title: 'Scalable Architecture', sub: 'High-Performance Backend ecosystems', icon: CpuIcon },
+    { title: 'Nexus Interfaces', sub: 'Modern frontend fluid mechanics', icon: LaptopIcon },
+    { title: 'Security Protocols', sub: 'Encrypted deployment matrices', icon: ShieldCheckIcon },
 ]
 
 const experience = [
@@ -662,10 +706,23 @@ onMounted(() => {
             scale: 1.1
         })
 
-        gsap.to('.m-line', { y: 0, duration: 2, ease: 'expo.out', stagger: 0.3, delay: 0.5 })
-        gsap.to('.manifesto-reveal', { opacity: 1, y: 0, duration: 1.5, stagger: 0.2, delay: 1.2, ease: 'power3.out' })
-        gsap.to('.m-line', { scrollTrigger: { trigger: '.manifesto-container', start: 'top top', end: 'bottom top', scrub: 1 }, y: -150, stagger: 0.05 })
-        gsap.to('.bg-focal', { scrollTrigger: { trigger: '#about', start: 'top bottom', end: 'bottom top', scrub: 2 }, y: 300, scale: 1.2 })
+        // DNA Section: Cinema Reveal
+        const dnaTl = gsap.timeline({
+            scrollTrigger: {
+                trigger: '.dna-section',
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            }
+        })
+
+        dnaTl.to('.dna-line', { y: 0, duration: 1.5, ease: 'expo.out', stagger: 0.2 })
+            .to('.reveal-dna', { opacity: 1, x: 0, y: 0, duration: 1.3, stagger: 0.1, ease: 'power4.out' }, '-=1')
+            .to('.stat-value', {
+                innerText: (i, el) => el.getAttribute('data-target'),
+                duration: 2.5,
+                snap: { innerText: 1 },
+                ease: 'expo.out'
+            }, '-=1')
 
         // Creative Protocol: Header Slide Reveal
         const protocolTl = gsap.timeline({
@@ -893,5 +950,15 @@ onMounted(() => {
 .stream-item:hover .pulse-node {
     background-color: #00d27b !important;
     box-shadow: 0 0 20px rgba(0, 210, 123, 0.6);
+}
+
+@keyframes float {
+    from {
+        transform: translateY(0) translateX(0);
+    }
+
+    to {
+        transform: translateY(-100vh) translateX(20px);
+    }
 }
 </style>

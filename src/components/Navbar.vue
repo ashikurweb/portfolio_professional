@@ -20,9 +20,25 @@
                                 class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
                         </a>
                     </nav>
-                    <button
-                        class="bg-primary hover:bg-primary/90 text-dark font-black py-3 px-8 rounded-full transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(0,210,123,0.3)] hover:shadow-[0_0_30px_rgba(0,210,123,0.5)]">
-                        Hire Me
+                    <button ref="hireBtnRef" class="hire-btn-modern relative group perspective-1000">
+                        <!-- Animated Border Gradient -->
+                        <div
+                            class="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_100%] animate-gradient-shift opacity-70 group-hover:opacity-100 transition-opacity">
+                        </div>
+                        <div class="absolute inset-[2px] rounded-full bg-dark z-10"></div>
+
+                        <!-- Button Content -->
+                        <span
+                            class="relative z-20 block px-8 py-3 font-black text-primary group-hover:text-white transition-colors duration-300">
+                            <span class="hire-text-wrapper inline-block" :class="{ 'glitch-active': isGlitching }">
+                                {{ hireButtonText }}
+                            </span>
+                        </span>
+
+                        <!-- Hover Glow Effect -->
+                        <div
+                            class="absolute inset-0 rounded-full bg-primary/20 blur-xl scale-0 group-hover:scale-150 transition-transform duration-700 -z-10">
+                        </div>
                     </button>
                 </div>
 
@@ -64,13 +80,17 @@ import { onMounted, ref, watch } from 'vue'
 import Logo from './Logo.vue'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { TextPlugin } from 'gsap/TextPlugin'
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger, TextPlugin)
 
 const navRef = ref(null)
 const containerRef = ref(null)
+const hireBtnRef = ref(null)
 const isMobileMenuOpen = ref(false)
 const isScrolled = ref(false)
+const hireButtonText = ref('Hire Me')
+const isGlitching = ref(false)
 
 const navLinks = [
     { name: 'Home', href: '#' },
@@ -129,6 +149,41 @@ onMounted(() => {
             }
         }
     })
+
+    // Hire Button Typing Animation
+    const phrases = ['Hire Me', 'Let\'s Talk', 'Start Project', 'Get in Touch']
+    let currentIndex = 0
+
+    const typePhrase = () => {
+        const nextPhrase = phrases[currentIndex]
+
+        // Trigger glitch effect
+        isGlitching.value = true
+
+        gsap.timeline()
+            .to(hireButtonText, {
+                duration: 0.2,
+                text: '',
+                ease: 'power2.in',
+            })
+            .to(hireButtonText, {
+                duration: 0.6,
+                text: nextPhrase,
+                ease: 'none',
+                onComplete: () => {
+                    isGlitching.value = false
+                }
+            })
+
+        currentIndex = (currentIndex + 1) % phrases.length
+    }
+
+    // Start animation after 2 seconds, then repeat every 4 seconds
+    gsap.delayedCall(2, () => {
+        typePhrase()
+        gsap.ticker.add(() => { }, 4)
+        setInterval(typePhrase, 4000)
+    })
 })
 </script>
 
@@ -142,5 +197,72 @@ onMounted(() => {
 .fade-leave-to {
     opacity: 0;
     transform: translateY(-10px);
+}
+
+/* Modern Hire Button Styles */
+.hire-btn-modern {
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.hire-btn-modern:hover {
+    transform: translateY(-2px) scale(1.05);
+}
+
+.hire-btn-modern:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* Animated Gradient Shift */
+@keyframes gradient-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.animate-gradient-shift {
+    animation: gradient-shift 3s ease infinite;
+}
+
+/* Glitch Effect */
+.glitch-active {
+    animation: glitch 0.3s ease;
+}
+
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(-2px, 2px);
+    }
+
+    40% {
+        transform: translate(-2px, -2px);
+    }
+
+    60% {
+        transform: translate(2px, 2px);
+    }
+
+    80% {
+        transform: translate(2px, -2px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+.perspective-1000 {
+    perspective: 1000px;
 }
 </style>
