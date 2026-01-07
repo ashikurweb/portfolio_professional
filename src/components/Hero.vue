@@ -1,91 +1,125 @@
 <template>
-    <section ref="heroRef" id="home" class="relative min-h-screen flex items-center pt-20 overflow-hidden bg-[#0A0F1E]">
-        <!-- Animated Glow Background -->
-        <div class="absolute inset-0 pointer-events-none">
-            <div class="glow-1 absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/10 rounded-full blur-[120px]">
+    <section ref="heroRef" id="home"
+        class="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#020408]">
+        <!-- Premium Mesh Gradient Background -->
+        <div class="absolute inset-0 pointer-events-none overflow-hidden">
+            <!-- Geometric Tech Grid -->
+            <div class="absolute inset-0 opacity-[0.03]"
+                style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;">
+            </div>
+
+            <!-- Static Mesh Glows -->
+            <div class="glow-1 absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-primary/20 rounded-full blur-[140px]">
             </div>
             <div
-                class="glow-2 absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-secondary/5 rounded-full blur-[120px]">
+                class="glow-2 absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-secondary/10 rounded-full blur-[140px]">
+            </div>
+            <div
+                class="glow-3 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40%] h-[40%] bg-blue-500/5 rounded-full blur-[120px]">
             </div>
         </div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-            <div class="flex flex-col lg:flex-row items-center justify-between gap-16">
-                <div class="flex-1 text-center lg:text-left">
-                    <div
-                        class="hero-badge inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/5 border border-white/10 text-primary text-sm font-bold mb-8 opacity-0">
-                        <span class="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
-                        Elevating Digital Experiences
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 py-20">
+            <div class="flex flex-col lg:flex-row items-center gap-20">
+                <div class="flex-1 space-y-10 min-w-[50%]">
+                    <div class="overflow-hidden">
                     </div>
 
-                    <h1 class="hero-title text-6xl md:text-8xl font-black leading-[0.9] mb-8 tracking-tighter">
-                        <div class="overflow-hidden"><span class="block line-1">DESIGN</span></div>
-                        <div class="overflow-hidden"><span class="block line-2 text-primary italic">THINKING</span>
+                    <div class="space-y-4">
+                        <h1 class="text-6xl md:text-[7.5rem] font-black tracking-[-0.04em] leading-[0.85] text-white">
+                            <div class="overflow-hidden h-[1em] flex items-center"><span class="block title-word"
+                                    ref="word1Ref"></span>
+                            </div>
+                            <div class="overflow-hidden h-[1em] flex items-center">
+                                <span class="block title-word-outline text-transparent"
+                                    style="-webkit-text-stroke: 1px rgba(255,255,255,0.2)" ref="word2Ref"></span>
+                            </div>
+                            <div class="overflow-hidden h-[1em] flex items-center text-primary"><span
+                                    class="block title-word" ref="word3Ref"></span></div>
+                        </h1>
+                    </div>
+
+                    <div
+                        class="flex flex-col sm:flex-row items-start sm:items-center gap-12 opacity-0 hero-meta translate-y-10">
+                        <p class="text-white/30 text-lg max-w-xs leading-relaxed font-medium">
+                            Architecting <span class="text-white/60">Digital Ecosystems</span> with a focus on
+                            high-fidelity performance.
+                        </p>
+                        <div class="h-12 w-[1px] bg-white/10 hidden sm:block"></div>
+                        <div class="flex flex-col">
+                            <span class="text-primary text-2xl font-black italic">2026</span>
+                            <span class="text-[10px] text-white/20 uppercase tracking-[0.4em] font-bold">Edition</span>
                         </div>
-                        <div class="overflow-hidden"><span class="block line-3">SOLUTIONS</span></div>
-                    </h1>
+                    </div>
 
-                    <p class="hero-desc text-xl text-gray-400 mb-12 max-w-xl leading-relaxed mx-auto lg:mx-0 opacity-0">
-                        I am Ashikur, a software engineer and UI/UX innovator crafting high-performance digital
-                        solutions.
-                    </p>
-
-                    <div class="hero-btns flex flex-wrap items-center justify-center lg:justify-start gap-6 opacity-0">
+                    <div class="flex items-center gap-6 opacity-0 hero-btns-modern translate-y-10">
                         <button
-                            class="group relative px-10 py-5 bg-primary text-dark font-black rounded-2xl overflow-hidden transition-all hover:scale-105">
-                            <span class="relative z-10">START A PROJECT</span>
+                            class="group relative px-10 py-4 bg-primary rounded-lg overflow-hidden transition-all hover:shadow-[0_0_30px_-5px_#00D27B]">
+                            <span class="relative z-10 text-black font-black text-sm italic tracking-widest">INITIALIZE
+                                PROJECT</span>
                             <div
-                                class="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                                class="absolute inset-0 bg-white -translate-x-full group-hover:translate-x-0 transition-transform duration-500">
                             </div>
                         </button>
                         <button
-                            class="group px-10 py-5 border border-white/20 text-white font-bold rounded-2xl hover:bg-white/5 transition-all">
-                            VIEW WORK
+                            class="px-8 py-4 text-white/40 hover:text-white font-bold transition-all text-sm tracking-widest border-b border-white/0 hover:border-white/20">
+                            // VIEW_ARCHIVE
                         </button>
                     </div>
                 </div>
 
-                <div class="hero-image-container flex-1 relative opacity-0">
-                    <div class="relative w-full max-w-[550px] mx-auto p-4">
-                        <!-- Floating Decorative Elements -->
+                <div class="flex-1 relative hero-visual opacity-0 translate-x-20 flex-shrink-0">
+                    <div class="relative group max-w-[550px] mx-auto lg:ml-auto select-none">
+                        <!-- Modern Glow Aura -->
                         <div
-                            class="float-item-1 absolute -top-10 -right-10 w-32 h-32 bg-secondary/20 rounded-full blur-2xl">
-                        </div>
-                        <div
-                            class="float-item-2 absolute -bottom-10 -left-10 w-40 h-40 bg-primary/20 rounded-full blur-2xl">
+                            class="absolute inset-0 bg-primary/10 blur-[100px] rounded-full scale-110 group-hover:bg-primary/20 transition-all duration-1000">
                         </div>
 
-                        <div
-                            class="image-wrapper relative aspect-[4/5] rounded-[3rem] overflow-hidden border border-white/10 bg-[#121829] shadow-[0_0_50px_rgba(0,0,0,0.5)]">
-                            <img src="/assets/hero.png" alt="Ashikur"
-                                class="hero-img w-full h-full object-cover grayscale brightness-75 hover:grayscale-0 hover:brightness-100 transition-all duration-700 cursor-pointer" />
-
-                            <!-- Real-time Status Card -->
+                        <!-- Main Organic Frame (The "Modern Shaper") -->
+                        <div class="relative z-10 aspect-square p-4">
+                            <!-- Squircle Masked Image with Continuous Animation -->
                             <div
-                                class="status-card absolute bottom-8 left-8 right-8 bg-black/40 backdrop-blur-xl border border-white/10 p-6 rounded-[2rem]">
-                                <div class="flex items-center justify-between">
-                                    <div>
-                                        <p class="text-[10px] uppercase tracking-widest text-primary mb-1">Developer
-                                            Identity</p>
-                                        <h4 class="text-lg font-bold">Ashikur Rahman</h4>
-                                    </div>
-                                    <div
-                                        class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-dark">
-                                        <Terminal class="w-6 h-6" />
-                                    </div>
+                                class="relative w-full h-full overflow-hidden modern-organic-animation group-hover:scale-[1.02] transition-transform duration-700 shadow-2xl">
+                                <!-- Inner Border Glow -->
+                                <div
+                                    class="absolute inset-0 border-[8px] border-white/5 rounded-inherit z-10 pointer-events-none">
+                                </div>
+
+                                <img src="/assets/hero.jpg" alt="Ashikur"
+                                    class="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-110 transition-all duration-1000 ease-out" />
+
+                                <!-- Sleek Gradient Overlay -->
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-darker via-transparent to-transparent opacity-60">
                                 </div>
                             </div>
+
+                            <!-- Decorative Orbit Ring -->
+                            <div
+                                class="absolute inset-0 border border-white/10 rounded-full scale-125 animate-[spin_20s_linear_infinite] opacity-30">
+                            </div>
+                        </div>
+
+                        <!-- Abstract Cursor Hub -->
+                        <div ref="cursorFollower"
+                            class="absolute w-20 h-20 bg-primary/10 backdrop-blur-md rounded-full -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-0 border border-primary/20 z-50 flex items-center justify-center">
+                            <div class="w-2 h-2 bg-primary rounded-full"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Scroll Indicator -->
-        <div
-            class="hero-scroll-down absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-0">
-            <div class="w-[2px] h-12 bg-gradient-to-b from-primary to-transparent"></div>
-            <span class="text-[10px] uppercase tracking-[0.3em] font-bold">Scroll</span>
+        <!-- Global Coordinate Data -->
+        <div class="absolute bottom-10 right-10 flex gap-10 opacity-20 hidden md:flex">
+            <div class="flex flex-col text-[10px] text-white font-mono uppercase tracking-widest">
+                <span>LAT: 23.8103</span>
+                <span>LNG: 90.4125</span>
+            </div>
+            <div class="flex flex-col text-[10px] text-white font-mono uppercase tracking-widest">
+                <span>CPU: 0.002s</span>
+                <span>RND: 73DC94C</span>
+            </div>
         </div>
     </section>
 </template>
@@ -94,62 +128,72 @@
 import { onMounted, ref } from 'vue'
 import { Terminal } from 'lucide-vue-next'
 import gsap from 'gsap'
+import { TextPlugin } from 'gsap/TextPlugin'
+
+gsap.registerPlugin(TextPlugin)
 
 const heroRef = ref(null)
+const word1Ref = ref(null)
+const word2Ref = ref(null)
+const word3Ref = ref(null)
+const cursorFollower = ref(null)
 
 onMounted(() => {
     const ctx = gsap.context(() => {
-        const tl = gsap.timeline({ defaults: { ease: 'power4.out', duration: 1.2 } })
+        const tl = gsap.timeline({ defaults: { ease: 'power4.out', duration: 1.5 } })
 
-        tl.to('.hero-badge', { opacity: 1, y: 0, duration: 1 })
-            .from('.line-1, .line-2, .line-3', {
-                y: 150,
-                skewY: 10,
-                stagger: 0.1,
-                duration: 1.5,
-            }, '-=0.8')
-            .to('.hero-desc', { opacity: 1, y: 0, duration: 1 }, '-=1')
-            .to('.hero-btns', { opacity: 1, y: 0, duration: 1 }, '-=1')
-            .to('.hero-image-container', { opacity: 1, x: 0, scale: 1, duration: 1.5 }, '-=1.2')
-            .to('.hero-scroll-down', { opacity: 0.4, y: 0, duration: 1 }, '-=0.5')
+        // Initial Reveal
+        tl.to('.hero-badge-modern', { opacity: 1, y: 0, duration: 1 })
+            .to('.hero-visual', { opacity: 1, x: 0, duration: 2 }, '-=0.5')
+            .to('.hero-meta', { opacity: 1, y: 0 }, '-=1.5')
+            .to('.hero-btns-modern', { opacity: 1, y: 0 }, '-=1.3')
 
-        // Floating animation for decorative elements
-        gsap.to('.float-item-1', {
-            y: 40,
-            duration: 3,
+        // Professional Typing Sequence (Smooth & Looping)
+        const typeTl = gsap.timeline({ repeat: -1 })
+
+        typeTl
+            .to(word1Ref.value, { text: "DEVELOPMENT", duration: 0.6, ease: "none" })
+            .to(word2Ref.value, { text: "THINKING", duration: 0.8, ease: "none" })
+            .to(word3Ref.value, { text: "SOLUTIONS", duration: 0.8, ease: "none" })
+            .to({}, { duration: 3 })
+            .to([word1Ref.value, word2Ref.value, word3Ref.value], { text: "", duration: 0.6, ease: "power2.inOut", stagger: 0.1 })
+            .to({}, { duration: 0.5 })
+
+        // Floating Motion
+        gsap.to('.hero-visual', {
+            y: -20,
+            duration: 4,
             repeat: -1,
             yoyo: true,
             ease: 'sine.inOut'
         })
-        gsap.to('.float-item-2', {
-            y: -40,
-            duration: 4,
-            repeat: -1,
-            yoyo: true,
-            ease: 'sine.inOut',
-            delay: 0.5
-        })
 
-        // Mouse movement parallax effect for hero image
+        // Interactive Tracking
         if (heroRef.value) {
             heroRef.value.addEventListener('mousemove', (e) => {
                 const { clientX, clientY } = e
-                const xPos = (clientX / window.innerWidth - 0.5) * 40
-                const yPos = (clientY / window.innerHeight - 0.5) * 40
+                const rect = heroRef.value.getBoundingClientRect()
+                const x = clientX - rect.left
+                const y = clientY - rect.top
 
-                gsap.to('.image-wrapper', {
-                    x: xPos,
-                    y: yPos,
-                    duration: 2,
+                gsap.to(cursorFollower.value, {
+                    x, y,
+                    opacity: 1,
+                    duration: 0.6,
                     ease: 'power2.out'
                 })
 
-                gsap.to('.glow-1', {
-                    x: xPos * 1.5,
-                    y: yPos * 1.5,
-                    duration: 3,
+                // Subtle Parallax
+                gsap.to('.main-frame', {
+                    rotateY: (clientX / window.innerWidth - 0.5) * 10,
+                    rotateX: (clientY / window.innerHeight - 0.5) * -10,
+                    duration: 1,
                     ease: 'power2.out'
                 })
+            })
+
+            heroRef.value.addEventListener('mouseleave', () => {
+                gsap.to(cursorFollower.value, { opacity: 0, duration: 0.5 })
             })
         }
     }, heroRef.value)
@@ -157,7 +201,45 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.hero-title {
-    text-shadow: 20px 20px 0 rgba(255, 255, 255, 0.02);
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@900&display=swap');
+
+.modern-organic-animation {
+    animation: morphing 10s ease-in-out infinite;
+    transition: all 0.8s ease;
+}
+
+@keyframes morphing {
+    0% {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    }
+
+    25% {
+        border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
+    }
+
+    50% {
+        border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
+    }
+
+    75% {
+        border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
+    }
+
+    100% {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    }
+}
+
+.title-word {
+    font-family: 'Big Shoulders Display', sans-serif;
+}
+
+.title-word-outline {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+    color: transparent;
+}
+
+.noise-bg {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3e%3cfilter id='noiseFilter'%3e%3cfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3e%3c/filter%3e%3crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3e%3c/svg%3e");
 }
 </style>
