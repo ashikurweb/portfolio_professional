@@ -186,8 +186,13 @@
                     <span
                         class="text-primary font-mono text-[10px] tracking-[0.5em] uppercase mb-4 block animate-pulse">//
                         SYSTEM_GENESIS_v2.0</span>
-                    <h3 class="text-6xl md:text-[10rem] font-black italic uppercase tracking-tighter leading-none">
-                        ELITE <br /> <span class="text-primary tracking-normal ml-[0.3em]">EXPERIENCE</span>
+                    <h3
+                        class="text-6xl md:text-[11rem] font-black italic uppercase tracking-tighter leading-[0.85] relative">
+                        <span class="block text-white">ELITE</span>
+                        <span class="block text-primary ml-[0.1em] s-glitch" data-text="EXPERIENCE">EXPERIENCE</span>
+                        <div
+                            class="absolute -right-10 top-0 text-[10px] font-mono text-white/10 rotate-90 origin-left tracking-[1em] hidden lg:block">
+                            SYSTEM_ARCH_v4.1</div>
                     </h3>
                 </div>
 
@@ -214,15 +219,32 @@
                                             class="text-xs font-mono text-primary uppercase tracking-[0.4em]">MASTER_PROTOCOL_0{{
                                                 index + 1 }}</span>
                                     </div>
-                                    <div class="relative inline-block">
-                                        <h4
-                                            class="text-8xl md:text-[12rem] font-black italic opacity-10 leading-none outline-text uppercase">
-                                            {{ exp.period.includes('Present') ? '2024' : exp.period.split(' - ')[0] }}
-                                        </h4>
+                                    <div class="relative group/year">
+                                        <!-- Technical Corner Markers -->
                                         <div
-                                            class="absolute top-1/2 left-0 md:left-auto md:right-0 -translate-y-1/2 flex flex-col pointer-events-none">
-                                            <span class="text-[10px] font-black text-white/20 uppercase tracking-[1em]"
-                                                v-for="tag in exp.tags" :key="tag">{{ tag }}_</span>
+                                            class="absolute -top-4 -left-4 w-4 h-4 border-t-2 border-l-2 border-primary/30 group-hover/year:border-primary transition-colors">
+                                        </div>
+                                        <div
+                                            class="absolute -bottom-4 -right-4 w-4 h-4 border-b-2 border-r-2 border-primary/30 group-hover/year:border-primary transition-colors">
+                                        </div>
+
+                                        <div
+                                            class="relative overflow-hidden bg-white/[0.02] border border-white/10 rounded-2xl p-8 backdrop-blur-xl group-hover/year:border-primary/50 transition-all duration-700">
+                                            <div
+                                                class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent -translate-x-full group-hover/year:translate-x-full transition-transform duration-1000">
+                                            </div>
+
+                                            <h4
+                                                class="text-7xl md:text-9xl font-black italic leading-none outline-text-v2 uppercase">
+                                                {{ exp.period.includes('Present') ? '2024' : exp.period.split(' - ')[0]
+                                                }}
+                                            </h4>
+
+                                            <div
+                                                class="mt-4 flex items-center justify-between text-[10px] font-mono tracking-widest text-primary/40">
+                                                <span>STATUS: ACTIVE</span>
+                                                <span>NODE_ID: {{ index + 1 }}</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -289,7 +311,7 @@
                                     <div class="text-white/40 group relative inline-block">
                                         <p class="text-lg font-bold italic tracking-wide text-white/60">{{
                                             edu.institution
-                                        }}</p>
+                                            }}</p>
                                         <p class="text-[10px] uppercase tracking-[0.5em] mt-2 opacity-50">{{
                                             edu.location }}
                                         </p>
@@ -311,20 +333,40 @@
                             <!-- Right: Year / Visual Node -->
                             <div class="flex items-center justify-center order-1 md:order-2"
                                 :class="index % 2 === 0 ? '' : 'md:order-1'">
-                                <div class="relative">
+                                <div class="relative group/edu-node">
+                                    <!-- Holographic Frame -->
                                     <div
-                                        class="text-7xl md:text-[10rem] font-black italic text-white/[0.03] outline-text-subtle uppercase leading-none">
-                                        {{ edu.period.split(' - ')[1] }}
+                                        class="absolute inset-0 bg-primary/10 blur-[60px] rounded-full scale-0 group-hover/edu-node:scale-100 transition-transform duration-1000 opacity-20">
                                     </div>
-                                    <div
-                                        class="absolute inset-0 flex items-center justify-center translate-y-4 md:translate-y-8">
+
+                                    <div class="relative flex items-center justify-center">
                                         <div
-                                            class="w-24 h-24 md:w-32 md:h-32 rounded-[2rem] bg-[#0A0F1E] border border-white/10 flex items-center justify-center group hover:border-primary/40 transition-all duration-700 shadow-2xl overflow-hidden">
+                                            class="text-8xl md:text-[11rem] font-black italic text-white/[0.02] outline-text-v2 uppercase leading-none transform group-hover/edu-node:scale-110 transition-transform duration-1000">
+                                            {{ edu.period.split(' - ')[1] }}
+                                        </div>
+
+                                        <div class="absolute flex flex-col items-center">
                                             <div
-                                                class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                class="w-24 h-24 md:w-32 md:h-32 rounded-3xl bg-[#0A0F1E] border border-white/10 flex items-center justify-center relative overflow-hidden group-hover/edu-node:border-primary/50 transition-all duration-700 shadow-2xl">
+                                                <div
+                                                    class="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent">
+                                                </div>
+                                                <div class="absolute -inset-2 bg-primary/5 blur-xl animate-pulse"></div>
+
+                                                <GraduationCapIcon size="44" stroke-width="1"
+                                                    class="text-white/40 group-hover/edu-node:text-primary transition-all duration-700 z-10" />
+
+                                                <!-- Scanning Line -->
+                                                <div
+                                                    class="absolute inset-0 w-full h-[2px] bg-primary/30 -translate-y-full animate-scan">
+                                                </div>
                                             </div>
-                                            <GraduationCapIcon size="40"
-                                                class="text-white/20 group-hover:text-primary transition-all duration-700 group-hover:scale-110" />
+
+                                            <div
+                                                class="mt-4 px-4 py-1 bg-primary/10 border border-primary/20 rounded-full scale-0 group-hover/edu-node:scale-100 transition-transform duration-500">
+                                                <span
+                                                    class="text-[9px] font-mono text-primary font-bold uppercase tracking-tighter">SUCCESSION_COMPLETE</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -576,20 +618,68 @@ onMounted(() => {
     transform: translateY(100%);
 }
 
-.outline-text {
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.08);
+.outline-text-v2 {
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.08);
     color: transparent;
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.stream-item:hover .outline-text {
-    -webkit-text-stroke: 1px rgba(0, 210, 123, 0.3);
-    transform: scale(1.02) translateX(10px);
+.group:hover .outline-text-v2 {
+    -webkit-text-stroke: 1.5px rgba(0, 210, 123, 0.3);
+    color: rgba(255, 255, 255, 0.02);
 }
 
-.outline-text-subtle {
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.04);
-    color: transparent;
+@keyframes scan {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(400%);
+    }
+}
+
+.animate-scan {
+    animation: scan 3s linear infinite;
+}
+
+.s-glitch {
+    position: relative;
+}
+
+.s-glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #020408;
+    color: #00d27b;
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+    transform: translate(-0.025em, -0.0125em);
+    opacity: 0.8;
+    animation: glitch 2s infinite linear alternate-reverse;
+}
+
+@keyframes glitch {
+    0% {
+        clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%);
+        transform: translate(2px, -2px);
+    }
+
+    10% {
+        clip-path: polygon(0 15%, 100% 15%, 100% 15%, 0 15%);
+    }
+
+    20% {
+        clip-path: polygon(0 10%, 100% 10%, 100% 20%, 0 20%);
+        transform: translate(-2px, 2px);
+    }
+
+    100% {
+        clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+    }
 }
 
 @keyframes pulse-node-glow {
