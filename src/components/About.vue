@@ -168,98 +168,174 @@
             </div>
         </div>
 
-        <!-- Section 4: The Career Matrix (Previous Card Design) -->
-        <div class="py-40 relative bg-[#05070A] border-y border-white/5">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="mb-32 text-center">
-                    <span class="text-primary font-mono text-[10px] tracking-[0.4em] uppercase mb-4 block">03.
-                        SYSTEM_GENESIS</span>
-                    <h3 class="text-5xl md:text-8xl font-black italic uppercase tracking-tighter">ELITE <br /> <span
-                            class="text-primary tracking-normal">EXPERIENCE</span></h3>
+        <!-- Section 4: The Elite Stream (High-Performance Kinetic Timeline) -->
+        <div class="py-60 relative bg-[#020408] overflow-hidden stream-section">
+            <!-- Background Parallax Text -->
+            <div
+                class="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none select-none stream-bg-text">
+                <span class="text-[35vw] font-black italic uppercase tracking-tighter succession-text">SUCCESSION</span>
+            </div>
+
+            <!-- Technical Scanning Grid -->
+            <div
+                class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]">
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="mb-40 stream-header">
+                    <span
+                        class="text-primary font-mono text-[10px] tracking-[0.5em] uppercase mb-4 block animate-pulse">//
+                        SYSTEM_GENESIS_v2.0</span>
+                    <h3 class="text-6xl md:text-[10rem] font-black italic uppercase tracking-tighter leading-none">
+                        ELITE <br /> <span class="text-primary tracking-normal ml-[0.3em]">EXPERIENCE</span>
+                    </h3>
                 </div>
 
-                <div class="space-y-40">
-                    <!-- Professional Experience -->
-                    <div class="space-y-12">
-                        <div class="flex items-center gap-6 mb-16">
-                            <div class="p-4 bg-primary/10 border border-primary/20 rounded-2xl text-primary">
-                                <BriefcaseIcon size="32" />
-                            </div>
-                            <h4 class="text-3xl font-black uppercase italic tracking-widest">MASTER_PROTOCOL</h4>
-                        </div>
-
-                        <div class="grid grid-cols-1 gap-8">
-                            <div v-for="(exp, index) in experience" :key="index"
-                                class="exp-card p-12 bg-white/[0.02] border border-white/5 rounded-[4rem] hover:border-primary/30 transition-all duration-1000 group relative overflow-hidden backdrop-blur-3xl">
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                                </div>
-                                <div
-                                    class="flex flex-col lg:flex-row lg:items-center justify-between gap-12 relative z-10">
-                                    <div class="flex items-center gap-10">
-                                        <div
-                                            class="w-32 h-32 rounded-[3rem] bg-white/5 flex flex-col items-center justify-center border border-white/10 group-hover:bg-primary group-hover:text-dark transition-all duration-700">
-                                            <span class="text-xs font-black opacity-40 uppercase">Year</span>
-                                            <span class="text-2xl font-black italic">{{ exp.period.includes('Present') ?
-                                                '2024' : exp.period.split(' - ')[0] }}</span>
-                                        </div>
-                                        <div class="space-y-2">
-                                            <h5
-                                                class="text-4xl md:text-6xl font-black italic uppercase text-primary leading-tight">
-                                                {{ exp.role }}</h5>
-                                            <p class="text-white/40 font-bold tracking-widest text-xs uppercase">{{
-                                                exp.company }} | {{ exp.period }}</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex-1 lg:max-w-2xl">
-                                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
-                                            <li v-for="(point, pIdx) in exp.points" :key="pIdx"
-                                                class="flex gap-4 text-sm text-white/40 leading-relaxed group-hover:text-white/60">
-                                                <span class="text-primary mt-1.5 font-bold">»</span>
-                                                {{ point }}
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                <!-- The Stream Container -->
+                <div class="relative">
+                    <!-- Central Conduit (Data Line) -->
+                    <div
+                        class="absolute left-0 md:left-1/2 top-0 bottom-0 w-[2px] bg-white/5 -translate-x-1/2 hidden md:block conduit-line overflow-hidden">
+                        <div
+                            class="absolute top-0 left-0 w-full bg-primary conduit-progress origin-top h-full scale-y-0">
                         </div>
                     </div>
 
-                    <!-- Academic History -->
-                    <div class="space-y-12">
-                        <div class="flex items-center gap-6 mb-16">
-                            <div class="p-4 bg-primary/10 border border-primary/20 rounded-2xl text-primary">
-                                <GraduationCapIcon size="32" />
+                    <div class="space-y-60">
+                        <!-- Professional Peak -->
+                        <div v-for="(exp, index) in experience" :key="'exp-' + index"
+                            class="stream-item relative grid md:grid-cols-2 gap-10 md:gap-32">
+                            <!-- Left: Label/Metadata -->
+                            <div class="flex items-center md:justify-end md:text-right order-1">
+                                <div class="space-y-4 stream-meta">
+                                    <div class="flex items-center gap-4 md:flex-row-reverse">
+                                        <div class="w-12 h-[1px] bg-primary"></div>
+                                        <span
+                                            class="text-xs font-mono text-primary uppercase tracking-[0.4em]">MASTER_PROTOCOL_0{{
+                                                index + 1 }}</span>
+                                    </div>
+                                    <div class="relative inline-block">
+                                        <h4
+                                            class="text-8xl md:text-[12rem] font-black italic opacity-10 leading-none outline-text uppercase">
+                                            {{ exp.period.includes('Present') ? '2024' : exp.period.split(' - ')[0] }}
+                                        </h4>
+                                        <div
+                                            class="absolute top-1/2 left-0 md:left-auto md:right-0 -translate-y-1/2 flex flex-col pointer-events-none">
+                                            <span class="text-[10px] font-black text-white/20 uppercase tracking-[1em]"
+                                                v-for="tag in exp.tags" :key="tag">{{ tag }}_</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <h4 class="text-3xl font-black uppercase italic tracking-widest">ACADEMIC_ARC</h4>
+
+                            <!-- Right: Detailed Content -->
+                            <div class="stream-content order-2 self-center">
+                                <div class="space-y-8">
+                                    <h5 class="text-4xl md:text-7xl font-black italic uppercase leading-tight">
+                                        {{ exp.role }} <br />
+                                        <span class="text-primary">{{ exp.company }}</span>
+                                    </h5>
+                                    <div
+                                        class="flex items-center gap-6 text-white/40 font-mono text-xs tracking-widest">
+                                        <span class="px-3 py-1 bg-white/5 rounded-full border border-white/10 italic">{{
+                                            exp.period }}</span>
+                                        <span class="flex items-center gap-2">
+                                            <div class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></div>
+                                            LATEST_DEPLOYMENT
+                                        </span>
+                                    </div>
+                                    <ul class="space-y-6 max-w-lg">
+                                        <li v-for="(point, pIdx) in exp.points" :key="pIdx"
+                                            class="group flex gap-6 text-base text-white/40 leading-relaxed hover:text-white/80 transition-colors duration-500">
+                                            <span
+                                                class="text-primary font-black mt-1 group-hover:translate-x-1 transition-transform inline-block">»</span>
+                                            <p class="font-medium italic">{{ point }}</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Decorative Node Pulse (Active State) -->
+                            <div
+                                class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:flex items-center justify-center z-10">
+                                <div class="node-wrapper relative">
+                                    <div
+                                        class="w-4 h-4 rounded-full bg-primary/20 absolute -inset-2 blur-md opacity-0 active-glow">
+                                    </div>
+                                    <div
+                                        class="w-3 h-3 rounded-full bg-white/20 border border-white/30 pulse-node transition-colors duration-500">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div v-for="(edu, index) in education" :key="index"
-                                class="edu-card p-10 bg-white/[0.02] border border-white/5 rounded-[3rem] hover:border-primary/30 transition-all duration-700 group relative overflow-hidden">
-                                <div
-                                    class="absolute top-0 right-0 p-8 opacity-[0.03] group-hover:opacity-10 transition-opacity">
-                                    <GraduationCapIcon size="120" />
-                                </div>
-                                <div class="space-y-6 relative z-10">
-                                    <div class="space-y-1">
+                        <!-- Education Stream Nodes -->
+                        <div v-for="(edu, index) in education" :key="'edu-' + index"
+                            class="stream-item relative grid md:grid-cols-2 gap-10 md:gap-32">
+                            <!-- Left: Detailed Content (Alternating logic via class) -->
+                            <div class="stream-content order-2 md:order-1 self-center"
+                                :class="index % 2 === 0 ? 'md:text-right' : 'md:order-2'">
+                                <div class="space-y-8">
+                                    <div class="flex items-center gap-4"
+                                        :class="index % 2 === 0 ? 'md:flex-row-reverse md:justify-start' : ''">
+                                        <div class="w-8 h-[1px] bg-white/20"></div>
                                         <span
-                                            class="text-[10px] font-mono text-primary/60 tracking-[0.4em] uppercase">{{
-                                                edu.period }}</span>
-                                        <h5 class="text-3xl font-black uppercase italic leading-tight">{{ edu.title }}
-                                        </h5>
+                                            class="text-xs font-mono text-white/30 uppercase tracking-[0.4em]">ACADEMIC_ARC_0{{
+                                                index + 1 }}</span>
                                     </div>
-                                    <div class="p-6 bg-white/[0.03] border border-white/5 rounded-2xl">
-                                        <p class="text-sm font-bold text-white/60 mb-1">{{ edu.institution }}</p>
-                                        <p class="text-[10px] text-white/30 uppercase tracking-widest">{{ edu.location
+                                    <h5 class="text-3xl md:text-6xl font-black italic uppercase leading-tight">
+                                        {{ edu.title }}
+                                    </h5>
+                                    <div class="text-white/40 group relative inline-block">
+                                        <p class="text-lg font-bold italic tracking-wide text-white/60">{{
+                                            edu.institution
                                         }}</p>
+                                        <p class="text-[10px] uppercase tracking-[0.5em] mt-2 opacity-50">{{
+                                            edu.location }}
+                                        </p>
                                     </div>
-                                    <p class="text-sm text-white/40 leading-relaxed italic pr-4">{{ edu.desc }}</p>
-                                    <div class="pt-4 border-t border-white/5 flex items-center justify-between">
-                                        <span
-                                            class="text-[10px] font-black text-primary uppercase tracking-widest">Grade_Index</span>
-                                        <span class="text-3xl font-black italic">{{ edu.grade }}</span>
+                                    <p class="text-white/30 text-sm leading-relaxed max-w-md italic"
+                                        :class="index % 2 === 0 ? 'md:ml-auto' : ''">{{ edu.desc }}</p>
+                                    <div class="flex items-center gap-6 pt-4"
+                                        :class="index % 2 === 0 ? 'justify-end' : ''">
+                                        <div class="h-[1px] flex-1 bg-white/5"></div>
+                                        <div class="text-right">
+                                            <span
+                                                class="block text-[9px] font-black text-primary uppercase">Grade_Index</span>
+                                            <span class="text-4xl font-black italic">{{ edu.grade }}</span>
+                                        </div>
                                     </div>
+                                </div>
+                            </div>
+
+                            <!-- Right: Year / Visual Node -->
+                            <div class="flex items-center justify-center order-1 md:order-2"
+                                :class="index % 2 === 0 ? '' : 'md:order-1'">
+                                <div class="relative">
+                                    <div
+                                        class="text-7xl md:text-[10rem] font-black italic text-white/[0.03] outline-text-subtle uppercase leading-none">
+                                        {{ edu.period.split(' - ')[1] }}
+                                    </div>
+                                    <div
+                                        class="absolute inset-0 flex items-center justify-center translate-y-4 md:translate-y-8">
+                                        <div
+                                            class="w-24 h-24 md:w-32 md:h-32 rounded-[2rem] bg-[#0A0F1E] border border-white/10 flex items-center justify-center group hover:border-primary/40 transition-all duration-700 shadow-2xl overflow-hidden">
+                                            <div
+                                                class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity">
+                                            </div>
+                                            <GraduationCapIcon size="40"
+                                                class="text-white/20 group-hover:text-primary transition-all duration-700 group-hover:scale-110" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Alternate Decorative Node Position -->
+                            <div
+                                class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:flex items-center justify-center z-10">
+                                <div
+                                    class="w-4 h-4 rounded-full border border-primary/30 flex items-center justify-center pulse-node">
+                                    <div class="w-1.5 h-1.5 rounded-full bg-primary/40"></div>
                                 </div>
                             </div>
                         </div>
@@ -408,13 +484,85 @@ onMounted(() => {
             opacity: 0, scale: 0.4, x: (i) => (i % 2 === 0 ? -400 : 400), y: 200, rotation: (i) => (i % 2 === 0 ? -20 : 20), stagger: 0.1, ease: 'expo.out'
         })
 
-        // Career Matrix: High-Performance Swings
-        const items = gsap.utils.toArray('.exp-card, .edu-card')
-        items.forEach((item, i) => {
-            gsap.from(item, {
-                scrollTrigger: { trigger: item, start: 'top 90%', end: 'top 50%', scrub: 1 },
-                opacity: 0, x: i % 2 === 0 ? -150 : 150, rotation: i % 2 === 0 ? -5 : 5, ease: 'power2.out'
+        // Elite Stream: Advanced Kinetic Logic
+        gsap.to('.conduit-progress', {
+            scrollTrigger: { trigger: '.stream-section', start: 'top 30%', end: 'bottom 80%', scrub: true },
+            scaleY: 1
+        })
+
+        // Parallax Background
+        gsap.to('.succession-text', {
+            scrollTrigger: { trigger: '.stream-section', start: 'top bottom', end: 'bottom top', scrub: 1 },
+            y: -300,
+            rotate: -2
+        })
+
+        const streamItems = gsap.utils.toArray('.stream-item')
+
+        // Scroll Velocity Skew Effect
+        let proxy = { skew: 0 },
+            skewSetter = gsap.quickSetter('.stream-item', 'skewY', 'deg'),
+            clamp = gsap.utils.clamp(-10, 10);
+
+        ScrollTrigger.create({
+            onUpdate: (self) => {
+                let skew = clamp(self.getVelocity() / -300);
+                if (Math.abs(skew) > Math.abs(proxy.skew)) {
+                    proxy.skew = skew;
+                    gsap.to(proxy, {
+                        skew: 0,
+                        duration: 0.8,
+                        ease: 'power3',
+                        overwrite: true,
+                        onUpdate: () => skewSetter(proxy.skew)
+                    });
+                }
+            }
+        });
+
+        streamItems.forEach((item, i) => {
+            const content = item.querySelector('.stream-content')
+            const meta = item.querySelector('.stream-meta')
+            const node = item.querySelector('.pulse-node')
+            const activeGlow = item.querySelector('.active-glow')
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: item,
+                    start: 'top 80%',
+                    end: 'top 20%',
+                    toggleActions: 'play none none reverse',
+                }
             })
+
+            tl.from(node, { scale: 0, opacity: 0, duration: 1, ease: 'elastic.out(1, 0.3)' })
+                .to(node, { backgroundColor: '#00d27b', borderColor: '#00d27b', duration: 0.5 }, '-=0.5')
+                .to(activeGlow, { opacity: 1, scale: 2, duration: 1 }, '-=0.5')
+                .from(meta, {
+                    x: i % 2 === 0 ? -150 : 150,
+                    opacity: 0,
+                    duration: 1.2,
+                    ease: 'expo.out'
+                }, '-=0.8')
+                .from(content, {
+                    x: i % 2 === 0 ? 150 : -150,
+                    opacity: 0,
+                    duration: 1.2,
+                    ease: 'expo.out'
+                }, '-=1')
+                .from(item.querySelectorAll('li'), {
+                    opacity: 0,
+                    y: 20,
+                    stagger: 0.1,
+                    duration: 0.8,
+                    ease: 'power3.out'
+                }, '-=0.5')
+                .from(item.querySelectorAll('.outline-text, .outline-text-subtle'), {
+                    opacity: 0,
+                    scale: 0.9,
+                    duration: 2,
+                    ease: 'power4.out'
+                }, '-=1.2')
         })
 
         gsap.from('.bio-content', { scrollTrigger: { trigger: '.bio-content', start: 'top 85%', end: 'top 30%', scrub: 1 }, x: -50, opacity: 0, ease: 'power2.out' })
@@ -426,5 +574,60 @@ onMounted(() => {
 <style scoped>
 .m-line {
     transform: translateY(100%);
+}
+
+.outline-text {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.08);
+    color: transparent;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.stream-item:hover .outline-text {
+    -webkit-text-stroke: 1px rgba(0, 210, 123, 0.3);
+    transform: scale(1.02) translateX(10px);
+}
+
+.outline-text-subtle {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.04);
+    color: transparent;
+}
+
+@keyframes pulse-node-glow {
+    0% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+}
+
+.pulse-node {
+    animation: pulse-node-glow 4s infinite ease-in-out;
+}
+
+.stream-section {
+    perspective: 2000px;
+}
+
+.stream-item {
+    will-change: transform, opacity;
+    transform-style: preserve-3d;
+}
+
+.stream-content {
+    transition: transform 0.3s ease-out;
+}
+
+.stream-item:hover .pulse-node {
+    background-color: #00d27b !important;
+    box-shadow: 0 0 20px rgba(0, 210, 123, 0.6);
 }
 </style>
