@@ -43,35 +43,46 @@
                 </div>
 
                 <!-- Mobile Toggle -->
+                <!-- Mobile Toggle Modern -->
                 <button @click="isMobileMenuOpen = !isMobileMenuOpen"
-                    class="md:hidden flex flex-col gap-1.5 p-2 z-50 outline-none" aria-label="Toggle Menu">
-                    <span class="w-6 h-0.5 bg-white transition-all duration-300"
-                        :class="{ 'rotate-45 translate-y-2': isMobileMenuOpen }"></span>
-                    <span class="w-6 h-0.5 bg-white transition-opacity duration-300"
-                        :class="{ 'opacity-0': isMobileMenuOpen }"></span>
-                    <span class="w-6 h-0.5 bg-white transition-all duration-300"
-                        :class="{ '-rotate-45 -translate-y-2': isMobileMenuOpen }"></span>
+                    class="md:hidden relative z-50 p-2 group focus:outline-none" aria-label="Toggle Menu">
+                    <!-- Hover Effect Background -->
+                    <div
+                        class="absolute inset-0 bg-white/5 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300">
+                    </div>
+
+                    <div class="relative flex flex-col items-end justify-center gap-1.5 w-8">
+                        <span class="h-0.5 bg-white rounded-full transition-all duration-300 group-hover:bg-primary"
+                            :class="isMobileMenuOpen ? 'w-8 rotate-45 translate-y-2' : 'w-8'"></span>
+                        <span
+                            class="h-0.5 bg-white rounded-full transition-all duration-300 group-hover:bg-primary group-hover:w-8"
+                            :class="isMobileMenuOpen ? 'w-0 opacity-0' : 'w-5'"></span>
+                        <span class="h-0.5 bg-white rounded-full transition-all duration-300 group-hover:bg-primary"
+                            :class="isMobileMenuOpen ? 'w-8 -rotate-45 -translate-y-2' : 'w-8'"></span>
+                    </div>
                 </button>
             </div>
         </div>
 
         <!-- Mobile Menu Overlay -->
-        <Transition name="fade">
-            <div v-if="isMobileMenuOpen" class="md:hidden fixed inset-0 bg-darker/98 backdrop-blur-2xl z-40">
-                <div class="flex flex-col items-center justify-center h-full gap-10">
-                    <a v-for="(link, index) in navLinks" :key="link.name" :href="link.href"
-                        @click="isMobileMenuOpen = false"
-                        class="text-3xl font-black text-white hover:text-primary transition-colors transform hover:scale-110 duration-300">
-                        <span class="text-primary/30 mr-2 font-mono text-sm">0{{ index + 1 }}</span>
-                        {{ link.name }}
-                    </a>
-                    <button @click="isMobileMenuOpen = false"
-                        class="mt-6 bg-primary text-dark font-black py-5 px-12 rounded-xl text-xl shadow-[0_0_30px_rgba(0,210,123,0.3)]">
-                        Hire Me
-                    </button>
+        <Teleport to="body">
+            <Transition name="fade">
+                <div v-if="isMobileMenuOpen" class="md:hidden fixed inset-0 bg-darker/98 backdrop-blur-2xl z-[40]">
+                    <div class="flex flex-col items-center justify-center h-full gap-10">
+                        <a v-for="(link, index) in navLinks" :key="link.name" :href="link.href"
+                            @click="isMobileMenuOpen = false"
+                            class="text-3xl font-black text-white hover:text-primary transition-colors transform hover:scale-110 duration-300">
+                            <span class="text-primary/30 mr-2 font-mono text-sm">0{{ index + 1 }}</span>
+                            {{ link.name }}
+                        </a>
+                        <button @click="isMobileMenuOpen = false"
+                            class="mt-6 bg-primary text-dark font-black py-5 px-12 rounded-xl text-xl shadow-[0_0_30px_rgba(0,210,123,0.3)]">
+                            Hire Me
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </Transition>
+            </Transition>
+        </Teleport>
     </nav>
 </template>
 
