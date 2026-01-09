@@ -1,126 +1,7 @@
 <template>
     <section id="about" ref="aboutRef" class="relative bg-[#020408] text-white py-0 overflow-hidden">
         <!-- Section 1: The Technical Architect DNA (New Strategic Intro) -->
-        <div
-            class="min-h-screen relative flex items-center justify-center pt-20 pb-40 px-6 overflow-hidden dna-section bg-[#020408]">
-            <!-- Kinetic Data Particles -->
-            <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-20">
-                <div v-for="i in 15" :key="i" class="data-particle absolute bg-primary/20 rounded-full" :style="{
-                    width: Math.random() * 3 + 'px',
-                    height: Math.random() * 3 + 'px',
-                    top: Math.random() * 100 + '%',
-                    left: Math.random() * 100 + '%',
-                    animation: `float ${Math.random() * 10 + 10}s linear infinite`
-                }"></div>
-            </div>
 
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="grid lg:grid-cols-[1.2fr_1fr] gap-20 items-center">
-                    <!-- Left: High-Impact Vision -->
-                    <div class="space-y-16">
-                        <div class="space-y-6">
-                            <div class="flex items-center gap-4 reveal-dna opacity-0 -translate-x-10">
-                                <span class="w-12 h-[1px] bg-primary/40"></span>
-                                <span
-                                    class="text-[10px] font-mono font-black text-primary tracking-[0.6em] uppercase animate-pulse">//
-                                    STRATEGIC_IDENTITY_v5.0</span>
-                            </div>
-
-                            <h2
-                                class="text-6xl md:text-[11rem] font-black leading-none tracking-tighter uppercase relative mission-title">
-                                <div class="overflow-hidden">
-                                    <span class="block dna-line translate-y-full italic">SCALING</span>
-                                </div>
-                                <div class="overflow-hidden">
-                                    <span class="block dna-line translate-y-full text-primary">IDEAS</span>
-                                </div>
-                            </h2>
-                        </div>
-
-                        <p
-                            class="text-2xl md:text-4xl font-bold leading-tight text-white/40 italic max-w-2xl reveal-dna opacity-0">
-                            I am a <span class="text-white">Software Engineer</span> at Codeshaper, bridging the gap
-                            between <span class="text-white italic">complex logic</span> and fluid interfaces.
-                        </p>
-
-                        <!-- Live System Metrics -->
-                        <div class="grid grid-cols-2 md:grid-cols-3 gap-8 pt-8">
-                            <div v-for="(stat, idx) in impactStats" :key="idx"
-                                class="p-8 bg-white/[0.02] border border-white/5 rounded-[2.5rem] reveal-dna opacity-0 translate-y-10 group hover:border-primary/30 transition-all duration-700">
-                                <span
-                                    class="block text-[9px] font-mono text-white/20 uppercase tracking-[0.3em] mb-4">{{
-                                        stat.label }}</span>
-                                <div class="flex items-end gap-2 text-4xl font-black italic text-white font-mono">
-                                    <span class="stat-value" :data-target="stat.val">0</span>
-                                    <span class="text-primary text-sm font-mono mb-2">{{ stat.suffix }}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Right: The Archive Vault HUD -->
-                    <div class="hidden lg:block relative reveal-dna opacity-0 translate-x-20">
-                        <div
-                            class="p-16 bg-white/[0.02] border border-white/10 rounded-[5rem] backdrop-blur-3xl relative overflow-hidden group">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000">
-                            </div>
-
-                            <!-- Internal HUD Scanlines -->
-                            <div
-                                class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:100%_4px] pointer-events-none">
-                            </div>
-
-                            <div class="space-y-12 relative z-10">
-                                <div class="flex items-center justify-between border-b border-white/5 pb-8">
-                                    <h4 class="text-[10px] font-black text-primary uppercase tracking-[0.4em]">//
-                                        ARCHIVE_CONTROL</h4>
-                                    <div class="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">
-                                        <span class="text-[8px] font-black text-primary animate-pulse">LIVE_SYNC</span>
-                                    </div>
-                                </div>
-
-                                <div class="space-y-6">
-                                    <div v-for="(item, i) in archiveItems" :key="i"
-                                        class="p-8 bg-white/[0.03] rounded-[2.5rem] border border-white/5 hover:border-primary/20 transition-all duration-700 group/item flex items-center justify-between">
-                                        <div class="flex items-center gap-6">
-                                            <div
-                                                class="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-primary group-hover/item:bg-primary group-hover/item:text-dark transition-all duration-700">
-                                                <component :is="item.icon" size="24" stroke-width="1.5" />
-                                            </div>
-                                            <div>
-                                                <h5 class="text-lg font-black uppercase italic">{{ item.title }}</h5>
-                                                <p
-                                                    class="text-[9px] text-white/20 uppercase tracking-widest mt-1 italic">
-                                                    {{ item.sub }}</p>
-                                            </div>
-                                        </div>
-                                        <ChevronRightIcon size="20"
-                                            class="text-white/10 group-hover/item:text-primary transition-colors group-hover/item:translate-x-2 duration-500" />
-                                    </div>
-                                </div>
-
-                                <div
-                                    class="pt-8 flex items-center justify-between text-white/10 text-[9px] font-mono tracking-widest uppercase italic border-t border-white/5">
-                                    <span>Core_Stable</span>
-                                    <span>Architecture_v5.0</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Kinetic Indicator -->
-            <div
-                class="absolute bottom-10 left-10 md:left-auto md:right-24 flex items-center gap-6 text-white/10 group">
-                <div
-                    class="w-20 h-[1px] bg-white/10 group-hover:w-32 group-hover:bg-primary transition-all duration-1000">
-                </div>
-                <span
-                    class="text-[9px] font-mono tracking-[0.6em] uppercase group-hover:text-primary transition-colors">ACCESS_SYSTEM_CORE</span>
-            </div>
-        </div>
 
         <!-- Section 2: Core Pillars -->
         <div class="py-40 bg-[#05070A] border-y border-white/5 relative overflow-hidden">
@@ -139,7 +20,7 @@
                 </div>
 
                 <h3
-                    class="text-5xl md:text-[8rem] font-black italic uppercase italic leading-none tracking-tighter relative">
+                    class="text-3xl sm:text-5xl md:text-[8rem] font-black italic uppercase leading-none tracking-tighter relative">
                     <div class="overflow-hidden flex justify-center">
                         <span class="block pillar-slide-text opacity-0 -translate-x-full">CORE</span>
                         <span
@@ -158,7 +39,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pillar-grid">
                     <div v-for="(pillar, index) in pillars" :key="index" @mousemove="handleCardMove($event, index)"
                         @mouseleave="handleCardLeave(index)" ref="cardRefs"
-                        class="pillar-card group relative p-10 rounded-[4rem] bg-[#0A0F1E]/40 border border-white/10 overflow-hidden backdrop-blur-2xl transition-all duration-700 hover:border-primary/40"
+                        class="pillar-card group relative p-6 sm:p-10 rounded-[2.5rem] sm:rounded-[4rem] bg-[#0A0F1E]/40 border border-white/10 overflow-hidden backdrop-blur-2xl transition-all duration-700 hover:border-primary/40"
                         style="perspective: 1500px;">
 
                         <!-- Internal Grid Pattern -->
@@ -233,7 +114,8 @@
                             class="text-primary font-mono font-black uppercase tracking-[0.5em] text-[10px] block animate-pulse">02.
                             OPERATIONAL_FLOW</span>
                     </div>
-                    <h3 class="text-5xl md:text-[7rem] font-black italic uppercase leading-none tracking-tighter">
+                    <h3
+                        class="text-3xl sm:text-5xl md:text-[7rem] font-black italic uppercase leading-none tracking-tighter">
                         <div class="overflow-hidden">
                             <span class="block protocol-slide-text opacity-0 -translate-x-full">CREATIVE</span>
                         </div>
@@ -247,7 +129,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div v-for="(step, index) in process" :key="index" class="protocol-step group relative">
                         <div
-                            class="relative z-10 p-10 rounded-[3rem] bg-white/[0.02] border border-white/5 group-hover:border-primary/30 transition-all duration-700 h-full backdrop-blur-xl flex flex-col justify-between overflow-hidden">
+                            class="relative z-10 p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] bg-white/[0.02] border border-white/5 group-hover:border-primary/30 transition-all duration-700 h-full backdrop-blur-xl flex flex-col justify-between overflow-hidden">
                             <div
                                 class="absolute -right-4 -bottom-4 w-24 h-24 bg-primary/5 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
                             </div>
@@ -301,7 +183,7 @@
                     </div>
 
                     <h3
-                        class="text-6xl md:text-[11rem] font-black italic uppercase tracking-tighter leading-[0.85] relative">
+                        class="text-4xl sm:text-6xl md:text-[11rem] font-black italic uppercase tracking-tighter leading-[0.85] relative">
                         <div class="overflow-hidden">
                             <span class="block text-white stream-slide-text opacity-0 -translate-x-full">ELITE</span>
                         </div>
@@ -315,6 +197,58 @@
                             SYSTEM_ARCH_v4.1
                         </div>
                     </h3>
+                </div>
+
+                <!-- Personal Identity Matrix (New Addition) -->
+                <!-- Personal Identity Matrix (High-Tech HUD Design) -->
+                <div class="mb-32 relative z-10 w-full overflow-hidden">
+                    <div
+                        class="flex flex-wrap gap-4 justify-center lg:justify-between p-8 rounded-[2rem] bg-white/[0.01] border border-white/5 backdrop-blur-md relative group/hud">
+
+                        <!-- HUD Scanline (Moving) -->
+                        <div
+                            class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent translate-y-0 opacity-0 group-hover/hud:opacity-100 group-hover/hud:translate-y-[200px] transition-all duration-[3s] ease-linear">
+                        </div>
+
+                        <div v-for="(info, i) in personalInfo" :key="i"
+                            class="relative group/card flex-1 min-w-[200px] p-6 rounded-xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] hover:border-primary/20 transition-all duration-500 overflow-hidden cursor-default">
+
+                            <div class="flex flex-col h-full justify-between gap-4 relative z-10">
+                                <!-- Icon (Appears on Hover) -->
+                                <div
+                                    class="absolute -right-2 -top-2 text-primary/10 group-hover/card:text-primary/20 transform group-hover/card:scale-110 group-hover/card:rotate-12 transition-all duration-700">
+                                    <component :is="info.icon" size="60" stroke-width="1" />
+                                </div>
+
+                                <div class="flex items-center gap-3">
+                                    <component :is="info.icon" size="16"
+                                        class="text-primary/60 group-hover/card:text-primary transition-colors" />
+                                    <span
+                                        class="text-[9px] font-mono text-white/30 uppercase tracking-[0.2em] group-hover/card:text-primary/70 transition-colors">{{
+                                            info.label }}</span>
+                                </div>
+
+                                <div>
+                                    <span
+                                        class="block text-sm font-bold text-white/90 leading-snug group-hover/card:text-white transition-colors font-sans break-words">{{
+                                            info.value }}</span>
+                                </div>
+                            </div>
+
+                            <!-- Active Status Dot -->
+                            <div
+                                class="absolute bottom-3 right-3 w-1.5 h-1.5 rounded-full bg-white/10 group-hover/card:bg-primary group-hover/card:shadow-[0_0_10px_#00d27b] transition-all duration-500">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- System Decoration Line -->
+                    <div
+                        class="flex items-center justify-between text-[9px] font-mono text-white/10 px-4 mt-2 uppercase tracking-widest">
+                        <span>/// SYS.ID_MATRIX_LOADED</span>
+                        <span>[SECURE_CONNECTION]</span>
+                    </div>
                 </div>
 
                 <!-- The Stream Container -->
@@ -350,13 +284,13 @@
                                         </div>
 
                                         <div
-                                            class="relative overflow-hidden bg-white/[0.02] border border-white/10 rounded-2xl p-8 backdrop-blur-xl group-hover/year:border-primary/50 transition-all duration-700">
+                                            class="relative overflow-hidden bg-white/[0.02] border border-white/10 rounded-2xl p-4 sm:p-8 backdrop-blur-xl group-hover/year:border-primary/50 transition-all duration-700">
                                             <div
                                                 class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent -translate-x-full group-hover/year:translate-x-full transition-transform duration-1000">
                                             </div>
 
                                             <h4
-                                                class="text-7xl md:text-9xl font-black italic leading-none outline-text-v2 uppercase">
+                                                class="text-5xl sm:text-7xl md:text-9xl font-black italic leading-none outline-text-v2 uppercase">
                                                 {{ exp.period.includes('Present') ? '2024' : exp.period.split(' - ')[0]
                                                 }}
                                             </h4>
@@ -374,7 +308,8 @@
                             <!-- Right: Detailed Content -->
                             <div class="stream-content order-2 self-center">
                                 <div class="space-y-8">
-                                    <h5 class="text-4xl md:text-7xl font-black italic uppercase leading-tight">
+                                    <h5
+                                        class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black italic uppercase leading-tight">
                                         {{ exp.role }} <br />
                                         <span class="text-primary">{{ exp.company }}</span>
                                     </h5>
@@ -426,7 +361,8 @@
                                             class="text-xs font-mono text-white/30 uppercase tracking-[0.4em]">ACADEMIC_ARC_0{{
                                                 index + 1 }}</span>
                                     </div>
-                                    <h5 class="text-3xl md:text-6xl font-black italic uppercase leading-tight">
+                                    <h5
+                                        class="text-2xl sm:text-3xl md:text-6xl font-black italic uppercase leading-tight">
                                         {{ edu.title }}
                                     </h5>
                                     <div class="text-white/40 group relative inline-block">
@@ -462,7 +398,7 @@
 
                                     <div class="relative flex flex-col items-center justify-center">
                                         <div
-                                            class="text-8xl md:text-[11rem] font-black italic text-white/[0.02] outline-text-v2 uppercase leading-none transform group-hover/edu-node:scale-110 transition-transform duration-1000">
+                                            class="text-6xl sm:text-8xl md:text-[11rem] font-black italic text-white/[0.02] outline-text-v2 uppercase leading-none transform group-hover/edu-node:scale-110 transition-transform duration-1000">
                                             {{ edu.period.split(' - ')[1] }}
                                         </div>
 
@@ -506,60 +442,14 @@
                 </div>
             </div>
         </div>
-
-        <!-- Section 5: Detailed Bio -->
-        <div class="py-40 bg-[#0A0F1E] relative overflow-hidden">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="grid lg:grid-cols-2 gap-32 items-center">
-                    <div class="space-y-12 bio-content">
-                        <div class="space-y-8">
-                            <div class="h-[1px] w-20 bg-primary"></div>
-                            <h4 class="text-5xl md:text-[5.5rem] font-black uppercase italic leading-[0.9]">Architecting
-                                <br /> <span class="text-primary italic">Interfaces</span> With Precision
-                            </h4>
-                            <p class="text-white/60 text-2xl leading-relaxed italic pr-10">"Strategic, goal-oriented,
-                                and obsessed with the intersection of performance and high-end aesthetic."</p>
-                            <p class="text-white/40 leading-relaxed text-lg">
-                                Enthusiastic Software Engineer focusing on backend stability and frontend fluidity.
-                                Experience in building scalable ecosystems and modern user experiences.
-                            </p>
-                        </div>
-                        <div
-                            class="p-10 bg-white/[0.02] border border-white/5 rounded-[3rem] backdrop-blur-2xl grid grid-cols-2 gap-10 relative overflow-hidden group">
-                            <div class="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-20 transition-opacity">
-                                <TerminalIcon size="100" />
-                            </div>
-                            <div v-for="info in personalInfo" :key="info.label"><span
-                                    class="text-[10px] text-primary font-mono uppercase tracking-[0.3em] block mb-2 opacity-60">{{
-                                        info.label }}</span><span class="text-base font-bold text-white/90">{{ info.value
-                                    }}</span></div>
-                        </div>
-                    </div>
-                    <div class="relative bio-visual">
-                        <div class="relative aspect-square max-w-[500px] mx-auto group">
-                            <div
-                                class="absolute inset-0 border-[40px] border-white/5 rounded-[4rem] group-hover:rotate-12 transition-transform duration-1000">
-                            </div>
-                            <div class="absolute inset-4 border border-primary/20 rounded-[3rem] animate-pulse"></div>
-                            <div class="relative w-full h-full rounded-[3.5rem] overflow-hidden shadow-2xl"><img
-                                    src="/assets/about.png" alt="Ashikur Rahman"
-                                    class="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000 scale-110 group-hover:scale-100" />
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
 </template>
 
 <script setup>
 import { onMounted, ref, reactive } from 'vue'
 import {
-    Code2Icon, SparklesIcon, TargetIcon, SearchIcon, LayersIcon, ShieldCheckIcon, TerminalIcon, BriefcaseIcon, GraduationCapIcon, ZapIcon, CpuIcon, RocketIcon, ActivityIcon, Building2Icon, MapPinIcon, LaptopIcon, PaletteIcon, LeafIcon, SwordsIcon, TargetIcon as GoalIcon
+    Code2Icon, SparklesIcon, TargetIcon, SearchIcon, LayersIcon, ShieldCheckIcon, TerminalIcon, BriefcaseIcon, GraduationCapIcon, ZapIcon, CpuIcon, RocketIcon, ActivityIcon, Building2Icon, MapPinIcon, LaptopIcon, PaletteIcon, LeafIcon, SwordsIcon, TargetIcon as GoalIcon,
+    MailIcon, PhoneIcon, CalendarIcon, CheckCircleIcon, UserIcon, GlobeIcon
 } from 'lucide-vue-next'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -615,12 +505,12 @@ const education = [
 ]
 
 const personalInfo = [
-    { label: 'RESIDENCE', value: 'Dhaka, Bangladesh' },
-    { label: 'TEMPORAL', value: '31 Oct 2003 (21y)' },
-    { label: 'ACADEMIC', value: 'Diploma in CSE' },
-    { label: 'EMAIL', value: 'ashikurrahman7194@gmail.com' },
-    { label: 'CONTACT', value: '+8801700-917194' },
-    { label: 'STATUS', value: 'Available for Excellence' },
+    { label: 'RESIDENCE', value: 'Dhaka, Bangladesh', icon: MapPinIcon },
+    { label: 'TEMPORAL', value: '31 Oct 2003 (21y)', icon: CalendarIcon },
+    { label: 'ACADEMIC', value: 'Diploma in CSE', icon: GraduationCapIcon },
+    { label: 'EMAIL', value: 'ashikurrahman7194@gmail.com', icon: MailIcon },
+    { label: 'CONTACT', value: '+8801700-917194', icon: PhoneIcon },
+    { label: 'STATUS', value: 'Available for Excellence', icon: CheckCircleIcon },
 ]
 
 const handleCardMove = (e, index) => {
