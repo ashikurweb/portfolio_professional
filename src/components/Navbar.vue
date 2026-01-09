@@ -66,17 +66,18 @@
 
         <!-- Mobile Menu Overlay -->
         <Teleport to="body">
-            <Transition name="fade">
-                <div v-if="isMobileMenuOpen" class="md:hidden fixed inset-0 bg-darker/98 backdrop-blur-2xl z-[40]">
+            <Transition @enter="enterMenu" @leave="leaveMenu" :css="false">
+                <div v-if="isMobileMenuOpen"
+                    class="md:hidden fixed inset-0 bg-darker/98 backdrop-blur-2xl z-[40] mobile-menu-overlay">
                     <div class="flex flex-col items-center justify-center h-full gap-10">
                         <a v-for="(link, index) in navLinks" :key="link.name" :href="link.href"
                             @click="isMobileMenuOpen = false"
-                            class="text-3xl font-black text-white hover:text-primary transition-colors transform hover:scale-110 duration-300">
+                            class="mobile-link text-3xl font-black text-white hover:text-primary transition-colors transform hover:scale-110 duration-300 opacity-0 translate-y-8">
                             <span class="text-primary/30 mr-2 font-mono text-sm">0{{ index + 1 }}</span>
                             {{ link.name }}
                         </a>
                         <button @click="isMobileMenuOpen = false"
-                            class="mt-6 bg-primary text-dark font-black py-5 px-12 rounded-xl text-xl shadow-[0_0_30px_rgba(0,210,123,0.3)]">
+                            class="mobile-btn mt-6 bg-primary text-dark font-black py-5 px-12 rounded-xl text-xl shadow-[0_0_30px_rgba(0,210,123,0.3)] opacity-0 translate-y-8">
                             Hire Me
                         </button>
                     </div>
@@ -115,6 +116,49 @@ const navLinks = [
 watch(isMobileMenuOpen, (val) => {
     document.body.style.overflow = val ? 'hidden' : ''
 })
+
+const enterMenu = (el, done) => {
+    const tl = gsap.timeline({ onComplete: done })
+
+    tl.fromTo(el,
+        { opacity: 0, backdropFilter: 'blur(0px)' },
+        { opacity: 1, backdropFilter: 'blur(24px)', duration: 0.5, ease: 'power2.out' }
+    )
+
+    const links = el.querySelectorAll('.mobile-link')
+    const btn = el.querySelector('.mobile-btn')
+
+    tl.to([...links, btn], {
+        opacity: 1,
+        y: 0,
+        stagger: 0.1,
+        duration: 0.8,
+        ease: 'elastic.out(1, 0.5)',
+        delay: -0.3
+    })
+}
+
+const leaveMenu = (el, done) => {
+    const tl = gsap.timeline({ onComplete: done })
+
+    const links = el.querySelectorAll('.mobile-link')
+    const btn = el.querySelector('.mobile-btn')
+
+    tl.to([...links, btn], {
+        opacity: 0,
+        y: -20,
+        stagger: 0.05,
+        duration: 0.3,
+        ease: 'power2.in'
+    })
+
+    tl.to(el, {
+        opacity: 0,
+        backdropFilter: 'blur(0px)',
+        duration: 0.4,
+        ease: 'power2.in'
+    }, '-=0.1')
+}
 
 onMounted(() => {
     const nav = navRef.value
@@ -199,17 +243,6 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.fade-enter-active,
-.fade-leave-active {
-    transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-    opacity: 0;
-    transform: translateY(-10px);
-}
-
 /* Modern Hire Button Styles */
 .hire-btn-modern {
     transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
