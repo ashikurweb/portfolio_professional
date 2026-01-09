@@ -3,7 +3,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <span class="text-primary font-bold uppercase tracking-widest text-sm mb-4 block">Portfolio</span>
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">Featured <span class="text-primary">Projects</span></h2>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">Featured <span
+                        class="text-primary">Projects</span></h2>
                 <p class="text-gray-400 max-w-2xl mx-auto">
                     Explore a selection of my recently completed projects, showcasing my expertise in various domains.
                 </p>

@@ -22,13 +22,13 @@
                 </div>
 
                 <h2
-                    class="text-7xl md:text-[12rem] font-black tracking-tighter leading-[0.8] uppercase reveal-item opacity-0">
+                    class="text-4xl sm:text-7xl md:text-[12rem] font-black tracking-tighter leading-[0.8] uppercase reveal-item opacity-0">
                     Technical <span class="text-transparent outline-text italic">Arsenal</span> <br />
                     <span class="text-primary">Super</span> Powers
                 </h2>
 
                 <div class="flex flex-col md:flex-row gap-10 md:items-center pt-10 reveal-item opacity-0">
-                    <p class="text-white/30 text-lg max-w-xl font-medium leading-relaxed italic">
+                    <p class="text-white/30 text-base sm:text-lg max-w-xl font-medium leading-relaxed italic">
                         Forging <span class="text-white">high-performance systems</span> with a relentless focus on
                         scalable architecture and <span class="text-primary">pixel-perfect implementation</span>.
                     </p>
@@ -36,13 +36,14 @@
                     <div class="flex flex-col">
                         <span
                             class="text-[9px] font-mono text-white/20 uppercase tracking-[0.4em] mb-1">NODES_IDENTIFIED</span>
-                        <span class="text-3xl font-black text-primary italic">{{ skillsList.length }}.00_STABLE</span>
+                        <span class="text-xl sm:text-3xl font-black text-primary italic">{{ skillsList.length
+                        }}.00_STABLE</span>
                     </div>
                 </div>
             </div>
 
             <!-- Elite Nexus Matrix (The Modern Skill Design) -->
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-24 gap-x-12 skills-matrix">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-12 sm:gap-y-24 gap-x-12 skills-matrix">
                 <div v-for="(skill, index) in skillsList" :key="index"
                     class="nexus-node group relative cursor-crosshair"
                     :class="{ 'featured-skill': (index + 1) % 5 === 3 }">
@@ -51,7 +52,7 @@
                     <div class="relative z-10 flex flex-col items-center">
                         <!-- Node Core -->
                         <div class="relative flex items-center justify-center mb-8 transition-all duration-700"
-                            :class="(index + 1) % 5 === 3 ? 'w-40 h-40 md:w-52 md:h-52' : 'w-32 h-32 md:w-40 md:h-40'">
+                            :class="(index + 1) % 5 === 3 ? 'w-32 h-32 sm:w-40 sm:h-40 md:w-52 md:h-52' : 'w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40'">
                             <!-- Rotating Technical Border -->
                             <div
                                 class="absolute inset-0 border-[0.5px] border-white/5 rounded-full group-hover:border-primary/40 transition-colors duration-700">
@@ -62,10 +63,10 @@
 
                             <!-- Static Center Node -->
                             <div class="rounded-full bg-white/[0.02] border border-white/10 flex items-center justify-center text-white/20 group-hover:text-primary transition-all duration-700 overflow-hidden group-hover:border-primary/30 group-hover:bg-primary/5"
-                                :class="(index + 1) % 5 === 3 ? 'w-28 h-28 md:w-36 md:h-36' : 'w-20 h-20 md:w-24 md:h-24'">
+                                :class="(index + 1) % 5 === 3 ? 'w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36' : 'w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24'">
                                 <img :src="skill.logo" :alt="skill.name"
                                     class="object-contain relative z-10 group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100"
-                                    :class="(index + 1) % 5 === 3 ? 'w-16 h-16 md:w-20 md:h-20' : 'w-12 h-12 md:w-14 md:h-14'" />
+                                    :class="(index + 1) % 5 === 3 ? 'w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20' : 'w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14'" />
                                 <!-- Holographic Scanning line inside node -->
                                 <div
                                     class="absolute inset-0 bg-gradient-to-b from-transparent via-primary/20 to-transparent -translate-y-full group-hover:translate-y-full transition-transform duration-1000">
@@ -94,7 +95,7 @@
                                 class="text-[9px] font-mono text-white/20 uppercase tracking-[0.4em] block group-hover:text-primary transition-colors">LVL_{{
                                     skill.strength * 20 }}%</span>
                             <h3 class="font-black uppercase italic tracking-tighter text-white/40 group-hover:text-white transition-all duration-500 scale-95 group-hover:scale-100"
-                                :class="(index + 1) % 5 === 3 ? 'text-3xl md:text-4xl' : 'text-2xl md:text-3xl'">
+                                :class="(index + 1) % 5 === 3 ? 'text-2xl sm:text-3xl md:text-4xl' : 'text-xl sm:text-2xl md:text-3xl'">
                                 {{ skill.name }}
                             </h3>
                         </div>

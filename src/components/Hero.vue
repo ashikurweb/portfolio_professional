@@ -26,7 +26,8 @@
                     </div>
 
                     <div class="space-y-4">
-                        <h1 class="text-6xl md:text-[7.5rem] font-black tracking-[-0.04em] leading-[0.85] text-white">
+                        <h1
+                            class="text-4xl sm:text-6xl md:text-[7.5rem] font-black tracking-[-0.04em] leading-[0.85] text-white">
                             <div class="overflow-hidden h-[1em] flex items-center"><span class="block title-word"
                                     ref="word1Ref"></span>
                             </div>
@@ -41,20 +42,20 @@
 
                     <div
                         class="flex flex-col sm:flex-row items-start sm:items-center gap-12 opacity-0 hero-meta translate-y-10">
-                        <p class="text-white/30 text-lg max-w-xs leading-relaxed font-medium">
+                        <p class="text-white/30 text-base sm:text-lg max-w-xs leading-relaxed font-medium">
                             Architecting <span class="text-white/60">Digital Ecosystems</span> with a focus on
                             high-fidelity performance.
                         </p>
                         <div class="h-12 w-[1px] bg-white/10 hidden sm:block"></div>
                         <div class="flex flex-col">
-                            <span class="text-primary text-2xl font-black italic">2026</span>
+                            <span class="text-primary text-xl sm:text-2xl font-black italic">2026</span>
                             <span class="text-[10px] text-white/20 uppercase tracking-[0.4em] font-bold">Edition</span>
                         </div>
                     </div>
 
                     <div class="flex items-center gap-6 opacity-0 hero-btns-modern translate-y-10">
                         <button
-                            class="group relative px-10 py-4 bg-primary rounded-lg overflow-hidden transition-all hover:shadow-[0_0_30px_-5px_#00D27B]">
+                            class="group relative px-6 sm:px-10 py-3 sm:py-4 bg-primary rounded-lg overflow-hidden transition-all hover:shadow-[0_0_30px_-5px_#00D27B]">
                             <span class="relative z-10 text-black font-black text-sm italic tracking-widest">INITIALIZE
                                 PROJECT</span>
                             <div
@@ -62,7 +63,7 @@
                             </div>
                         </button>
                         <button
-                            class="px-8 py-4 text-white/40 hover:text-white font-bold transition-all text-sm tracking-widest border-b border-white/0 hover:border-white/20">
+                            class="px-5 sm:px-8 py-3 sm:py-4 text-white/40 hover:text-white font-bold transition-all text-sm tracking-widest border-b border-white/0 hover:border-white/20">
                             // VIEW_ARCHIVE
                         </button>
                     </div>

@@ -27,7 +27,7 @@
                             </div>
 
                             <h2
-                                class="text-6xl md:text-[11rem] font-black leading-none tracking-tighter uppercase relative mission-title">
+                                class="text-4xl sm:text-6xl md:text-[11rem] font-black leading-none tracking-tighter uppercase relative mission-title">
                                 <div class="overflow-hidden">
                                     <span class="block dna-line translate-y-full italic">SCALING</span>
                                 </div>
@@ -38,7 +38,7 @@
                         </div>
 
                         <p
-                            class="text-2xl md:text-4xl font-bold leading-tight text-white/40 italic max-w-2xl reveal-dna opacity-0">
+                            class="text-xl sm:text-2xl md:text-4xl font-bold leading-tight text-white/40 italic max-w-2xl reveal-dna opacity-0">
                             I am a <span class="text-white">Software Engineer</span> at Codeshaper, bridging the gap
                             between <span class="text-white italic">complex logic</span> and fluid interfaces.
                         </p>
@@ -46,7 +46,7 @@
                         <!-- Live System Metrics -->
                         <div class="grid grid-cols-2 md:grid-cols-3 gap-8 pt-8">
                             <div v-for="(stat, idx) in impactStats" :key="idx"
-                                class="p-8 bg-white/[0.02] border border-white/5 rounded-[2.5rem] reveal-dna opacity-0 translate-y-10 group hover:border-primary/30 transition-all duration-700">
+                                class="p-4 sm:p-8 bg-white/[0.02] border border-white/5 rounded-[1.5rem] sm:rounded-[2.5rem] reveal-dna opacity-0 translate-y-10 group hover:border-primary/30 transition-all duration-700">
                                 <span
                                     class="block text-[9px] font-mono text-white/20 uppercase tracking-[0.3em] mb-4">{{
                                         stat.label }}</span>
@@ -139,7 +139,7 @@
                 </div>
 
                 <h3
-                    class="text-5xl md:text-[8rem] font-black italic uppercase italic leading-none tracking-tighter relative">
+                    class="text-3xl sm:text-5xl md:text-[8rem] font-black italic uppercase leading-none tracking-tighter relative">
                     <div class="overflow-hidden flex justify-center">
                         <span class="block pillar-slide-text opacity-0 -translate-x-full">CORE</span>
                         <span
@@ -158,7 +158,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pillar-grid">
                     <div v-for="(pillar, index) in pillars" :key="index" @mousemove="handleCardMove($event, index)"
                         @mouseleave="handleCardLeave(index)" ref="cardRefs"
-                        class="pillar-card group relative p-10 rounded-[4rem] bg-[#0A0F1E]/40 border border-white/10 overflow-hidden backdrop-blur-2xl transition-all duration-700 hover:border-primary/40"
+                        class="pillar-card group relative p-6 sm:p-10 rounded-[2.5rem] sm:rounded-[4rem] bg-[#0A0F1E]/40 border border-white/10 overflow-hidden backdrop-blur-2xl transition-all duration-700 hover:border-primary/40"
                         style="perspective: 1500px;">
 
                         <!-- Internal Grid Pattern -->
@@ -233,7 +233,8 @@
                             class="text-primary font-mono font-black uppercase tracking-[0.5em] text-[10px] block animate-pulse">02.
                             OPERATIONAL_FLOW</span>
                     </div>
-                    <h3 class="text-5xl md:text-[7rem] font-black italic uppercase leading-none tracking-tighter">
+                    <h3
+                        class="text-3xl sm:text-5xl md:text-[7rem] font-black italic uppercase leading-none tracking-tighter">
                         <div class="overflow-hidden">
                             <span class="block protocol-slide-text opacity-0 -translate-x-full">CREATIVE</span>
                         </div>
@@ -247,7 +248,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div v-for="(step, index) in process" :key="index" class="protocol-step group relative">
                         <div
-                            class="relative z-10 p-10 rounded-[3rem] bg-white/[0.02] border border-white/5 group-hover:border-primary/30 transition-all duration-700 h-full backdrop-blur-xl flex flex-col justify-between overflow-hidden">
+                            class="relative z-10 p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] bg-white/[0.02] border border-white/5 group-hover:border-primary/30 transition-all duration-700 h-full backdrop-blur-xl flex flex-col justify-between overflow-hidden">
                             <div
                                 class="absolute -right-4 -bottom-4 w-24 h-24 bg-primary/5 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
                             </div>
@@ -301,7 +302,7 @@
                     </div>
 
                     <h3
-                        class="text-6xl md:text-[11rem] font-black italic uppercase tracking-tighter leading-[0.85] relative">
+                        class="text-4xl sm:text-6xl md:text-[11rem] font-black italic uppercase tracking-tighter leading-[0.85] relative">
                         <div class="overflow-hidden">
                             <span class="block text-white stream-slide-text opacity-0 -translate-x-full">ELITE</span>
                         </div>
@@ -350,13 +351,13 @@
                                         </div>
 
                                         <div
-                                            class="relative overflow-hidden bg-white/[0.02] border border-white/10 rounded-2xl p-8 backdrop-blur-xl group-hover/year:border-primary/50 transition-all duration-700">
+                                            class="relative overflow-hidden bg-white/[0.02] border border-white/10 rounded-2xl p-4 sm:p-8 backdrop-blur-xl group-hover/year:border-primary/50 transition-all duration-700">
                                             <div
                                                 class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent -translate-x-full group-hover/year:translate-x-full transition-transform duration-1000">
                                             </div>
 
                                             <h4
-                                                class="text-7xl md:text-9xl font-black italic leading-none outline-text-v2 uppercase">
+                                                class="text-5xl sm:text-7xl md:text-9xl font-black italic leading-none outline-text-v2 uppercase">
                                                 {{ exp.period.includes('Present') ? '2024' : exp.period.split(' - ')[0]
                                                 }}
                                             </h4>
@@ -374,7 +375,8 @@
                             <!-- Right: Detailed Content -->
                             <div class="stream-content order-2 self-center">
                                 <div class="space-y-8">
-                                    <h5 class="text-4xl md:text-7xl font-black italic uppercase leading-tight">
+                                    <h5
+                                        class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black italic uppercase leading-tight">
                                         {{ exp.role }} <br />
                                         <span class="text-primary">{{ exp.company }}</span>
                                     </h5>
@@ -426,13 +428,14 @@
                                             class="text-xs font-mono text-white/30 uppercase tracking-[0.4em]">ACADEMIC_ARC_0{{
                                                 index + 1 }}</span>
                                     </div>
-                                    <h5 class="text-3xl md:text-6xl font-black italic uppercase leading-tight">
+                                    <h5
+                                        class="text-2xl sm:text-3xl md:text-6xl font-black italic uppercase leading-tight">
                                         {{ edu.title }}
                                     </h5>
                                     <div class="text-white/40 group relative inline-block">
                                         <p class="text-lg font-bold italic tracking-wide text-white/60">{{
                                             edu.institution
-                                            }}</p>
+                                        }}</p>
                                         <p class="text-[10px] uppercase tracking-[0.5em] mt-2 opacity-50">{{
                                             edu.location }}
                                         </p>
@@ -462,7 +465,7 @@
 
                                     <div class="relative flex flex-col items-center justify-center">
                                         <div
-                                            class="text-8xl md:text-[11rem] font-black italic text-white/[0.02] outline-text-v2 uppercase leading-none transform group-hover/edu-node:scale-110 transition-transform duration-1000">
+                                            class="text-6xl sm:text-8xl md:text-[11rem] font-black italic text-white/[0.02] outline-text-v2 uppercase leading-none transform group-hover/edu-node:scale-110 transition-transform duration-1000">
                                             {{ edu.period.split(' - ')[1] }}
                                         </div>
 
@@ -514,10 +517,12 @@
                     <div class="space-y-12 bio-content">
                         <div class="space-y-8">
                             <div class="h-[1px] w-20 bg-primary"></div>
-                            <h4 class="text-5xl md:text-[5.5rem] font-black uppercase italic leading-[0.9]">Architecting
+                            <h4 class="text-3xl sm:text-5xl md:text-[5.5rem] font-black uppercase italic leading-[0.9]">
+                                Architecting
                                 <br /> <span class="text-primary italic">Interfaces</span> With Precision
                             </h4>
-                            <p class="text-white/60 text-2xl leading-relaxed italic pr-10">"Strategic, goal-oriented,
+                            <p class="text-white/60 text-lg sm:text-2xl leading-relaxed italic pr-10">"Strategic,
+                                goal-oriented,
                                 and obsessed with the intersection of performance and high-end aesthetic."</p>
                             <p class="text-white/40 leading-relaxed text-lg">
                                 Enthusiastic Software Engineer focusing on backend stability and frontend fluidity.

@@ -7,7 +7,7 @@
 
                 <div class="flex flex-col lg:flex-row gap-16 relative">
                     <div class="flex-1">
-                        <h2 class="text-4xl md:text-5xl font-bold mb-8">Let's Work <span
+                        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-8">Let's Work <span
                                 class="text-primary">Together</span></h2>
                         <p class="text-gray-400 mb-10 text-lg">
                             Have a project in mind? Reach out and let's build something extraordinary together. I'm
