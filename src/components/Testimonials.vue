@@ -158,27 +158,31 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
+import testimonial1 from '@/assets/testimonial1.png'
+import testimonial2 from '@/assets/testimonial2.png'
+import testimonial3 from '@/assets/testimonial3.png'
+
 const testimonials = [
     {
         name: 'Alexander Wright',
         role: 'CTO @ NEXUS LABS',
         company: 'NEXUS_LABS',
         content: "Ashikur's architectural vision transformed our legacy systems into high-speed digital ecosystems. Exceptional delivery.",
-        image: '/src/assets/testimonial1.png'
+        image: testimonial1
     },
     {
         name: 'Sophia Martinez',
         role: 'CREATIVE DIRECTOR',
         company: 'PIXEL_PERFECT',
         content: "The kinetic interface he engineered didn't just meet our needs—it redefined our brand's digital presence entirely.",
-        image: '/src/assets/testimonial2.png'
+        image: testimonial2
     },
     {
         name: 'Elena Volkov',
         role: 'LEAD ARCHITECT',
         company: 'CYBER_CORE',
         content: "Clean code, superior performance, and an agentic approach to problem-solving. A rare talent in modern engineering.",
-        image: '/src/assets/testimonial3.png'
+        image: testimonial3
     }
 ]
 
