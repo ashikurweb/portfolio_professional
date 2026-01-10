@@ -7,7 +7,7 @@
 
 Welcome to the **Elite Modern Portfolio**, a cutting-edge, high-performance web application designed with a focus on "Luxury Minimalism" and "Future Modern" aesthetics. This project showcases advanced GSAP animations, a responsive UI, and a premium user experience.
 
-🔗 **Live Demo:** [personal-portfolio.ashikurweb.com](https://portfolio-professional-ruddy.vercel.app) *(Update with your actual link)*
+🔗 **Live Demo:** [portfolio-professional-ruddy.vercel.app](https://portfolio-professional-ruddy.vercel.app) *(Update with your actual link)*
 
 ---
 
