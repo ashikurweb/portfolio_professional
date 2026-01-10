@@ -14,10 +14,12 @@
                 <div class="hidden md:flex items-center gap-10">
                     <nav class="flex gap-8">
                         <a v-for="link in navLinks" :key="link.name" :href="link.href"
-                            class="text-sm font-semibold text-gray-400 hover:text-primary relative group py-2 transition-colors duration-300">
+                            class="text-sm font-semibold relative group py-2 transition-colors duration-300"
+                            :class="activeSection === link.name ? 'text-primary' : 'text-gray-400 hover:text-primary'">
                             {{ link.name }}
                             <span
-                                class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                                class="absolute bottom-0 left-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"
+                                :class="activeSection === link.name ? 'w-full' : 'w-0'"></span>
                         </a>
                     </nav>
                     <button ref="hireBtnRef" class="hire-btn-modern relative group perspective-1000">
@@ -72,7 +74,8 @@
                     <div class="flex flex-col items-center justify-center h-full gap-10">
                         <a v-for="(link, index) in navLinks" :key="link.name" :href="link.href"
                             @click="isMobileMenuOpen = false"
-                            class="mobile-link text-3xl font-black text-white hover:text-primary transition-colors transform hover:scale-110 duration-300 opacity-0 translate-y-8">
+                            class="mobile-link text-3xl font-black transition-colors transform hover:scale-110 duration-300 opacity-0 translate-y-8"
+                            :class="activeSection === link.name ? 'text-primary' : 'text-white hover:text-primary'">
                             <span class="text-primary/30 mr-2 font-mono text-sm">0{{ index + 1 }}</span>
                             {{ link.name }}
                         </a>
@@ -88,7 +91,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref, watch } from 'vue'
+import { onMounted, ref, watch, nextTick } from 'vue'
 import Logo from './Logo.vue'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -103,6 +106,7 @@ const isMobileMenuOpen = ref(false)
 const isScrolled = ref(false)
 const hireButtonText = ref('Hire Me')
 const isGlitching = ref(false)
+const activeSection = ref('Home')
 
 const navLinks = [
     { name: 'Home', href: '#' },
@@ -203,6 +207,34 @@ onMounted(() => {
                 }
             }
         }
+    })
+
+    // Active Link Tracking
+    nextTick(() => {
+        navLinks.forEach(link => {
+            if (link.href === '#') {
+                // Home Tracker (Top of page)
+                ScrollTrigger.create({
+                    trigger: 'body',
+                    start: 'top 20%',
+                    end: 'top -20%', // Does not really end, but logic handles "Enter Back"
+                    onEnter: () => activeSection.value = 'Home',
+                    onEnterBack: () => activeSection.value = 'Home'
+                })
+                return
+            }
+
+            const section = document.querySelector(link.href)
+            if (section) {
+                ScrollTrigger.create({
+                    trigger: section,
+                    start: 'top 50%',
+                    end: 'bottom 50%',
+                    onEnter: () => activeSection.value = link.name,
+                    onEnterBack: () => activeSection.value = link.name
+                })
+            }
+        })
     })
 
     // Hire Button Typing Animation

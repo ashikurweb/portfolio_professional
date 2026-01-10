@@ -368,7 +368,7 @@
                                     <div class="text-white/40 group relative inline-block">
                                         <p class="text-lg font-bold italic tracking-wide text-white/60">{{
                                             edu.institution
-                                            }}</p>
+                                        }}</p>
                                         <p class="text-[10px] uppercase tracking-[0.5em] mt-2 opacity-50">{{
                                             edu.location }}
                                         </p>

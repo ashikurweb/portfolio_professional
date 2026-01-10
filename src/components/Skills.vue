@@ -146,7 +146,7 @@
                         class="flex items-center gap-3">
                         <div class="w-2 h-2 rounded-full bg-primary/40 animate-pulse"></div>
                         <span class="text-[9px] font-mono text-white/20 tracking-[0.4em] uppercase font-bold">{{ tag
-                            }}</span>
+                        }}</span>
                     </div>
                 </div>
 
