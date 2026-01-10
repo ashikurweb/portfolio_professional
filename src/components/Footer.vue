@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref, markRaw } from 'vue'
+import { onMounted, ref, markRaw, reactive } from 'vue'
 import Logo from './Logo.vue'
 import { Github, Twitter, Linkedin, Instagram } from 'lucide-vue-next'
 import gsap from 'gsap'
@@ -8,6 +8,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 const footerRef = ref(null)
+const socialRefs = ref([])
+const socialStyles = reactive({})
 
 const links = [
     { name: 'Home', href: '#' },
@@ -19,11 +21,28 @@ const links = [
 
 // Using markRaw to prevent Vue from making icons reactive
 const socials = [
-    { name: 'Github', href: '#', icon: markRaw(Github) },
-    { name: 'Twitter', href: '#', icon: markRaw(Twitter) },
-    { name: 'Linkedin', href: '#', icon: markRaw(Linkedin) },
-    { name: 'Instagram', href: '#', icon: markRaw(Instagram) },
+    { name: 'Github', href: 'http://github.com/ashikurweb', icon: markRaw(Github) },
+    { name: 'Twitter', href: 'https://x.com/Ashikur94', icon: markRaw(Twitter) },
+    { name: 'Linkedin', href: 'https://www.linkedin.com/feed/', icon: markRaw(Linkedin) },
+    { name: 'Instagram', href: 'https://www.instagram.com/', icon: markRaw(Instagram) },
 ]
+
+const handleSocialMove = (e, index) => {
+    const card = socialRefs.value[index]
+    if (!card) return
+    const rect = card.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+
+    socialStyles[index] = {
+        background: `radial-gradient(150px circle at ${x}px ${y}px, rgba(0, 210, 123, 0.4), transparent 80%)`
+    }
+}
+
+const handleSocialLeave = (index) => {
+    socialStyles[index] = { background: 'none' }
+}
+
 
 onMounted(() => {
     const ctx = gsap.context(() => {
@@ -144,16 +163,20 @@ onMounted(() => {
                         Network
                     </h4>
                     <div class="grid grid-cols-2 gap-4">
-                        <a v-for="social in socials" :key="social.name" :href="social.href"
-                            class="social-card group relative h-16 bg-white/[0.02] border border-white/5 overflow-hidden flex items-center justify-center transition-all duration-500 hover:border-primary/40 hover:bg-white/[0.04]">
-                            <div
-                                class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-5 transition-opacity duration-500">
-                            </div>
+                        <a v-for="(social, index) in socials" :key="social.name" :href="social.href" target="_blank"
+                            rel="noopener noreferrer" @mousemove="handleSocialMove($event, index)"
+                            @mouseleave="handleSocialLeave(index)" ref="socialRefs"
+                            class="social-card group relative h-16 bg-[#0A0F1E] border border-white/5 overflow-hidden flex items-center justify-center rounded-sm">
+
+                            <!-- Spotlight Glow -->
+                            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                                :style="socialStyles[index]"></div>
+
                             <div class="relative z-10 flex items-center gap-3">
                                 <component :is="social.icon"
-                                    class="w-4 h-4 text-gray-400 group-hover:text-primary transition-all duration-500 transform group-hover:scale-110" />
+                                    class="w-4 h-4 text-gray-400 group-hover:text-primary transition-all duration-300 group-hover:scale-110" />
                                 <span
-                                    class="text-[10px] font-mono font-bold text-gray-500 group-hover:text-white uppercase tracking-widest transition-colors">{{
+                                    class="text-[10px] font-mono font-bold text-gray-500 group-hover:text-white uppercase tracking-widest transition-colors duration-300">{{
                                         social.name }}</span>
                             </div>
                         </a>

@@ -8,6 +8,26 @@
         </div>
 
         <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <!-- Success Modal -->
+            <div v-if="showModal" class="fixed inset-0 z-[9999] flex items-center justify-center px-4 modal-wrapper">
+                <div class="absolute inset-0 bg-black/80 backdrop-blur-sm modal-backdrop" @click="closeModal"></div>
+                <div
+                    class="relative bg-[#0A0F1E] border border-primary/20 p-8 rounded-2xl max-w-md w-full text-center modal-content scale-90 opacity-0">
+                    <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
+                        <CheckCircle class="w-8 h-8 text-primary" />
+                    </div>
+                    <h3 class="text-2xl font-black text-white italic uppercase mb-2">Message Sent!</h3>
+                    <p class="text-white/60 mb-8 leading-relaxed">
+                        Thank you for reaching out. I've received your message and will get back to you as soon as
+                        possible.
+                    </p>
+                    <button @click="closeModal"
+                        class="w-full py-4 bg-primary text-black font-bold uppercase tracking-widest rounded-lg hover:bg-white transition-colors">
+                        Close
+                    </button>
+                </div>
+            </div>
+
             <!-- Massive Header -->
             <div class="mb-24 contact-header">
                 <div class="flex items-center gap-4 mb-6 reveal-meta opacity-0">
@@ -67,24 +87,28 @@
                     <div
                         class="absolute -inset-1 bg-gradient-to-b from-primary/20 to-transparent rounded-[2rem] blur-xl opacity-20">
                     </div>
-                    <form @submit.prevent
+                    <form @submit.prevent="handleSubmit"
                         class="relative bg-black/40 backdrop-blur-xl border border-white/10 rounded-[2rem] p-8 md:p-12 space-y-8">
                         <div class="grid md:grid-cols-2 gap-8">
                             <div class="group relative form-item opacity-0 translate-y-4">
                                 <label
                                     class="text-xs font-mono text-gray-500 tracking-wider uppercase mb-2 block group-focus-within:text-primary transition-colors">Coordinates
                                     [Name]</label>
-                                <input type="text"
+                                <input v-model="formData.name" type="text"
                                     class="w-full bg-transparent border-b border-white/10 py-3 text-white focus:border-primary focus:outline-none transition-all placeholder:text-white/10 font-light text-lg"
-                                    placeholder="John Doe" />
+                                    :class="{ 'border-red-500': errors.name }" placeholder="John Doe" />
+                                <span v-if="errors.name" class="text-red-500 text-[10px] mt-1 block">{{ errors.name
+                                    }}</span>
                             </div>
                             <div class="group relative form-item opacity-0 translate-y-4">
                                 <label
                                     class="text-xs font-mono text-gray-500 tracking-wider uppercase mb-2 block group-focus-within:text-primary transition-colors">Communication
                                     Link [Email]</label>
-                                <input type="email"
+                                <input v-model="formData.email" type="email"
                                     class="w-full bg-transparent border-b border-white/10 py-3 text-white focus:border-primary focus:outline-none transition-all placeholder:text-white/10 font-light text-lg"
-                                    placeholder="john@example.com" />
+                                    :class="{ 'border-red-500': errors.email }" placeholder="john@example.com" />
+                                <span v-if="errors.email" class="text-red-500 text-[10px] mt-1 block">{{ errors.email
+                                    }}</span>
                             </div>
                         </div>
 
@@ -92,29 +116,42 @@
                             <label
                                 class="text-xs font-mono text-gray-500 tracking-wider uppercase mb-2 block group-focus-within:text-primary transition-colors">System
                                 Header [Subject]</label>
-                            <input type="text"
+                            <input v-model="formData.subject" type="text"
                                 class="w-full bg-transparent border-b border-white/10 py-3 text-white focus:border-primary focus:outline-none transition-all placeholder:text-white/10 font-light text-lg"
-                                placeholder="Project Proposal" />
+                                :class="{ 'border-red-500': errors.subject }" placeholder="Project Proposal" />
+                            <span v-if="errors.subject" class="text-red-500 text-[10px] mt-1 block">{{ errors.subject
+                                }}</span>
                         </div>
 
                         <div class="group relative form-item opacity-0 translate-y-4">
                             <label
                                 class="text-xs font-mono text-gray-500 tracking-wider uppercase mb-2 block group-focus-within:text-primary transition-colors">Data
                                 Payload [Message]</label>
-                            <textarea rows="4"
+                            <textarea v-model="formData.message" rows="4"
                                 class="w-full bg-transparent border-b border-white/10 py-3 text-white focus:border-primary focus:outline-none transition-all placeholder:text-white/10 font-light text-lg resize-none"
+                                :class="{ 'border-red-500': errors.message }"
                                 placeholder="Tell me about your project..."></textarea>
+                            <span v-if="errors.message" class="text-red-500 text-[10px] mt-1 block">{{ errors.message
+                                }}</span>
                         </div>
 
-                        <button
-                            class="w-full group relative px-8 py-5 bg-white text-black font-bold uppercase tracking-widest overflow-hidden transition-all hover:bg-primary form-item opacity-0 translate-y-4">
+                        <button type="submit" :disabled="isSubmitting"
+                            class="w-full group relative px-8 py-5 bg-primary text-black font-bold uppercase tracking-widest overflow-hidden transition-all hover:bg-white hover:text-black disabled:opacity-50 disabled:cursor-not-allowed form-item opacity-0 translate-y-4 rounded-lg">
                             <span class="relative z-10 flex items-center justify-center gap-3">
-                                Initialize Transmission
-                                <svg xmlns="http://www.w3.org/2000/svg"
+                                {{ isSubmitting ? 'SENDING...' : 'Send Message' }}
+                                <svg v-if="!isSubmitting" xmlns="http://www.w3.org/2000/svg"
                                     class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                                <svg v-else class="animate-spin -ml-1 mr-3 h-5 w-5 text-black"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                        stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor"
+                                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                                    </path>
                                 </svg>
                             </span>
                         </button>
@@ -126,8 +163,8 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
-import { Mail, Phone, MapPin } from 'lucide-vue-next'
+import { onMounted, ref, reactive, watch, nextTick } from 'vue'
+import { Mail, Phone, MapPin, CheckCircle, XIcon } from 'lucide-vue-next'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -135,10 +172,100 @@ gsap.registerPlugin(ScrollTrigger)
 const contactRef = ref(null)
 
 const contactInfo = [
-    { label: 'Secure Channel', value: 'hello@alexmorgan.com', icon: Mail },
-    { label: 'Voice Link', value: '+1 (555) 000-0000', icon: Phone },
-    { label: 'Base Station', value: 'San Francisco, CA', icon: MapPin },
+    { label: 'Secure Channel', value: 'ashikurrahman7194@gmail.com', icon: Mail },
+    { label: 'Voice Link', value: '+8801700-917194', icon: Phone },
+    { label: 'Base Station', value: 'Dhaka, Bangladesh', icon: MapPin },
 ]
+
+// Form Logic
+const formData = reactive({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+})
+
+const errors = reactive({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+})
+
+const showModal = ref(false)
+const isSubmitting = ref(false)
+
+const validateForm = () => {
+    let isValid = true
+    errors.name = ''
+    errors.email = ''
+    errors.subject = ''
+    errors.message = ''
+
+    if (!formData.name) {
+        errors.name = 'Name is required'
+        isValid = false
+    }
+
+    if (!formData.email) {
+        errors.email = 'Email is required'
+        isValid = false
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+        errors.email = 'Invalid email format'
+        isValid = false
+    }
+
+    if (!formData.subject) {
+        errors.subject = 'Subject is required'
+        isValid = false
+    }
+
+    if (!formData.message) {
+        errors.message = 'Message is required'
+        isValid = false
+    }
+
+    return isValid
+}
+
+const handleSubmit = async () => {
+    if (!validateForm()) return
+
+    isSubmitting.value = true
+
+    // Simulate API call
+    setTimeout(() => {
+        isSubmitting.value = false
+        showModal.value = true
+        // Reset form
+        formData.name = ''
+        formData.email = ''
+        formData.subject = ''
+        formData.message = ''
+    }, 1500)
+}
+
+const closeModal = () => {
+    gsap.to('.modal-content', { scale: 0.9, opacity: 0, duration: 0.3 })
+    gsap.to('.modal-backdrop', {
+        opacity: 0, duration: 0.3, onComplete: () => {
+            showModal.value = false
+        }
+    })
+}
+
+// Watch for modal state to trigger animation
+watch(showModal, (val) => {
+    if (val) {
+        nextTick(() => {
+            gsap.fromTo('.modal-backdrop', { opacity: 0 }, { opacity: 1, duration: 0.4 })
+            gsap.fromTo('.modal-content',
+                { scale: 0.8, opacity: 0, y: 20 },
+                { scale: 1, opacity: 1, y: 0, duration: 0.5, ease: 'back.out(1.7)' }
+            )
+        })
+    }
+})
 
 onMounted(() => {
     const ctx = gsap.context(() => {
