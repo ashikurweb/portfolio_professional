@@ -9,8 +9,8 @@
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <!-- Header Section -->
-            <div class="mb-20">
-                <div class="flex items-center gap-4 mb-6">
+            <div class="mb-20 projects-header">
+                <div class="flex items-center gap-4 mb-6 project-label">
                     <span class="w-12 h-[1px] bg-primary/40"></span>
                     <span
                         class="text-[10px] font-mono font-black text-primary tracking-[0.6em] uppercase animate-pulse">
@@ -21,17 +21,17 @@
                 <h2
                     class="text-4xl sm:text-6xl md:text-[8rem] font-black italic uppercase leading-[0.85] tracking-tighter text-white mb-12">
                     <div class="overflow-hidden">
-                        <span class="block">SELECTED</span>
+                        <span class="block project-title-1">SELECTED</span>
                     </div>
                     <div class="overflow-hidden flex items-center gap-6">
-                        <span class="block text-transparent"
+                        <span class="block text-transparent project-title-2"
                             style="-webkit-text-stroke: 1px rgba(255,255,255,0.2);">WORKS</span>
                         <span class="hidden md:block h-[1px] flex-1 bg-white/10"></span>
                     </div>
                 </h2>
 
                 <!-- Control Panel (Tabs) -->
-                <div class="flex flex-wrap gap-4 items-center">
+                <div class="flex flex-wrap gap-4 items-center project-tabs">
                     <button v-for="tab in tabs" :key="tab" @click="activeTab = tab"
                         class="group relative px-6 py-3 overflow-hidden">
                         <!-- Active/Inactive Border -->
@@ -51,7 +51,7 @@
             <!-- Projects Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div v-for="(project, index) in filteredProjects" :key="project.id"
-                    class="group relative bg-[#080c14] border border-white/5 rounded-3xl overflow-hidden hover:border-primary/40 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500">
+                    class="project-card group relative bg-[#080c14] border border-white/5 rounded-3xl overflow-hidden hover:border-primary/40 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500">
 
                     <!-- Project Image/Preview -->
                     <div class="aspect-[16/10] overflow-hidden relative">
@@ -193,5 +193,66 @@ const projects = [
 const filteredProjects = computed(() => {
     if (activeTab.value === 'All') return projects
     return projects.filter(p => p.category === activeTab.value)
+})
+
+import { onMounted } from 'vue'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
+onMounted(() => {
+    // Header Reveal Animation
+    const headerTl = gsap.timeline({
+        scrollTrigger: {
+            trigger: '.projects-header',
+            start: 'top 85%',
+            end: 'bottom 20%',
+            toggleActions: 'play reverse play reverse'
+        }
+    })
+
+    headerTl.from('.project-title-1', {
+        x: -100,
+        opacity: 0,
+        duration: 1.2,
+        ease: 'expo.out'
+    })
+        .from('.project-title-2', {
+            x: 100,
+            opacity: 0,
+            duration: 1.2,
+            skewX: 10,
+            ease: 'expo.out'
+        }, '-=1')
+        .from('.project-label', {
+            y: 20,
+            opacity: 0,
+            duration: 0.8,
+            ease: 'power3.out'
+        }, '-=0.8')
+        .from('.project-tabs button', {
+            y: 30,
+            opacity: 0,
+            stagger: 0.1,
+            duration: 1,
+            ease: 'back.out(1.7)'
+        }, '-=1')
+
+    // Project Cards Zoom-In on Scroll
+    gsap.utils.toArray('.project-card').forEach((card) => {
+        gsap.from(card, {
+            scale: 0.9,
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            ease: 'power4.out',
+            scrollTrigger: {
+                trigger: card,
+                start: 'top 90%',
+                toggleActions: 'play reverse play reverse'
+            }
+        })
+    })
 })
 </script>

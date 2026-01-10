@@ -45,11 +45,22 @@
             <div class="flex items-center gap-2">
                 <span class="h-[1px] w-4 bg-primary/50"></span>
                 <span
-                    class="text-[9px] uppercase tracking-[0.5em] font-bold text-gray-500 group-hover:text-primary/70 transition-colors">Innovator</span>
+                    class="text-[9px] uppercase tracking-[0.5em] font-bold text-gray-500 group-hover:text-primary/70 transition-colors uppercase whitespace-nowrap">
+                    {{ subText || 'Full Stack Dev' }}
+                </span>
             </div>
         </div>
     </div>
 </template>
+
+<script setup>
+defineProps({
+    subText: {
+        type: String,
+        default: 'Full Stack Dev'
+    }
+})
+</script>
 
 <style scoped>
 .group:hover .animate-bounce {
