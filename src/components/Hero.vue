@@ -141,13 +141,25 @@ const cursorFollower = ref(null)
 
 onMounted(() => {
     const ctx = gsap.context(() => {
-        const tl = gsap.timeline({ defaults: { ease: 'power4.out', duration: 1.5 } })
+        // Initial States - Hide everything
+        gsap.set(['.hero-visual', '.hero-meta', '.hero-btns-modern'], { opacity: 0, y: 30 })
+        gsap.set('.hero-visual', { x: 40, y: 0 })
+        gsap.set('.title-word, .title-word-outline', { y: "110%" })
 
-        // Initial Reveal
-        tl.to('.hero-badge-modern', { opacity: 1, y: 0, duration: 1 })
-            .to('.hero-visual', { opacity: 1, x: 0, duration: 2 }, '-=0.5')
-            .to('.hero-meta', { opacity: 1, y: 0 }, '-=1.5')
-            .to('.hero-btns-modern', { opacity: 1, y: 0 }, '-=1.3')
+        // Entrance Animation Triggered by Preloader
+        window.addEventListener('preloaderComplete', () => {
+            const tl = gsap.timeline({ defaults: { ease: 'expo.out', duration: 1.5 } })
+
+            tl.to('.hero-visual', { opacity: 1, x: 0, duration: 2 })
+                .to('.title-word, .title-word-outline', {
+                    y: 0,
+                    stagger: 0.1,
+                    duration: 1.2,
+                    ease: "expo.out"
+                }, "-=1.5")
+                .to('.hero-meta', { opacity: 1, y: 0 }, "-=1.2")
+                .to('.hero-btns-modern', { opacity: 1, y: 0 }, "-=1")
+        })
 
         // Professional Typing Sequence (Smooth & Looping)
         const typeTl = gsap.timeline({ repeat: -1 })

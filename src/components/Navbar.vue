@@ -4,7 +4,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div ref="containerRef" class="flex justify-between items-center h-24">
                 <!-- Logo Section -->
-                <div class="flex items-center">
+                <div class="flex items-center logo-brand opacity-0">
                     <a href="#" class="block transform hover:scale-105 transition-transform duration-300">
                         <Logo />
                     </a>
@@ -14,7 +14,7 @@
                 <div class="hidden md:flex items-center gap-10">
                     <nav class="flex gap-8">
                         <a v-for="link in navLinks" :key="link.name" :href="link.href"
-                            class="text-sm font-semibold relative group py-2 transition-colors duration-300"
+                            class="nav-item opacity-0 text-sm font-semibold relative group py-2 transition-colors duration-300"
                             :class="activeSection === link.name ? 'text-primary' : 'text-gray-400 hover:text-primary'">
                             {{ link.name }}
                             <span
@@ -22,26 +22,28 @@
                                 :class="activeSection === link.name ? 'w-full' : 'w-0'"></span>
                         </a>
                     </nav>
-                    <button ref="hireBtnRef" class="hire-btn-modern relative group perspective-1000">
-                        <!-- Animated Border Gradient -->
-                        <div
-                            class="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_100%] animate-gradient-shift opacity-70 group-hover:opacity-100 transition-opacity">
-                        </div>
-                        <div class="absolute inset-[2px] rounded-full bg-dark z-10"></div>
+                    <div class="hire-btn-wrapper opacity-0">
+                        <button ref="hireBtnRef" class="hire-btn-modern relative group perspective-1000">
+                            <!-- Animated Border Gradient -->
+                            <div
+                                class="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_100%] animate-gradient-shift opacity-70 group-hover:opacity-100 transition-opacity">
+                            </div>
+                            <div class="absolute inset-[2px] rounded-full bg-dark z-10"></div>
 
-                        <!-- Button Content -->
-                        <span
-                            class="relative z-20 block px-8 py-3 font-black text-primary group-hover:text-white transition-colors duration-300">
-                            <span class="hire-text-wrapper inline-block" :class="{ 'glitch-active': isGlitching }">
-                                {{ hireButtonText }}
+                            <!-- Button Content -->
+                            <span
+                                class="relative z-20 block px-8 py-3 font-black text-primary group-hover:text-white transition-colors duration-300">
+                                <span class="hire-text-wrapper inline-block" :class="{ 'glitch-active': isGlitching }">
+                                    {{ hireButtonText }}
+                                </span>
                             </span>
-                        </span>
 
-                        <!-- Hover Glow Effect -->
-                        <div
-                            class="absolute inset-0 rounded-full bg-primary/20 blur-xl scale-0 group-hover:scale-150 transition-transform duration-700 -z-10">
-                        </div>
-                    </button>
+                            <!-- Hover Glow Effect -->
+                            <div
+                                class="absolute inset-0 rounded-full bg-primary/20 blur-xl scale-0 group-hover:scale-150 transition-transform duration-700 -z-10">
+                            </div>
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Mobile Toggle -->
@@ -264,6 +266,19 @@ onMounted(() => {
 
         currentIndex = (currentIndex + 1) % phrases.length
     }
+
+    // Entrance Animation on Preloader Complete
+    window.addEventListener('preloaderComplete', () => {
+        const tl = gsap.timeline({ defaults: { ease: 'expo.out', duration: 1.2 } })
+
+        gsap.set('.nav-item', { y: -20, opacity: 0 })
+        gsap.set('.logo-brand', { x: -30, opacity: 0 })
+        gsap.set('.hire-btn-wrapper', { scale: 0.8, opacity: 0 })
+
+        tl.to('.logo-brand', { x: 0, opacity: 1 }, "+=0.2")
+            .to('.nav-item', { y: 0, opacity: 1, stagger: 0.1 }, "-=0.8")
+            .to('.hire-btn-wrapper', { scale: 1, opacity: 1, ease: 'back.out(1.7)' }, "-=0.6")
+    })
 
     // Start animation after 2 seconds, then repeat every 4 seconds
     gsap.delayedCall(2, () => {

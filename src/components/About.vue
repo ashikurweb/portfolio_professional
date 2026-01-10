@@ -211,7 +211,7 @@
                         </div>
 
                         <div v-for="(info, i) in personalInfo" :key="i"
-                            class="relative group/card flex-1 min-w-[200px] p-6 rounded-xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] hover:border-primary/20 transition-all duration-500 overflow-hidden cursor-default">
+                            class="personal-card relative group/card flex-1 min-w-[200px] p-6 rounded-xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] hover:border-primary/20 transition-all duration-500 overflow-hidden cursor-default opacity-0">
 
                             <div class="flex flex-col h-full justify-between gap-4 relative z-10">
                                 <!-- Icon (Appears on Hover) -->
@@ -730,6 +730,51 @@ onMounted(() => {
 
         gsap.from('.bio-content', { scrollTrigger: { trigger: '.bio-content', start: 'top 85%', end: 'top 30%', scrub: 1 }, x: -50, opacity: 0, ease: 'power2.out' })
         gsap.from('.bio-visual', { scrollTrigger: { trigger: '.bio-content', start: 'top 85%', end: 'top 30%', scrub: 1.5 }, scale: 0.9, opacity: 0.2, y: 100, ease: 'power3.out' })
+
+        // 1. Fast Snappy Reveal on Preloader Complete
+        window.addEventListener('preloaderComplete', () => {
+            gsap.to('.personal-card', {
+                opacity: 1,
+                x: 0,
+                y: 0,
+                duration: 0.8,
+                stagger: 0.05,
+                ease: 'expo.out',
+                delay: 0.2
+            })
+        })
+
+        // 2. Personalized Unique Entrances for Each Card on Scroll
+        gsap.utils.toArray('.personal-card').forEach((card, i) => {
+            let initialProps = { opacity: 0 }
+
+            // Assign unique animation based on index
+            if (i === 0) initialProps.x = -100 // Residence: Slide from Left
+            else if (i === 1) initialProps.x = 100 // Temporal: Slide from Right
+            else if (i === 2) initialProps.y = 100 // Academic: Rise from Bottom
+            else if (i === 3) { initialProps.y = -50; initialProps.rotateX = 90 } // Email: Flip from Top
+            else if (i === 4) { initialProps.skewX = 20; initialProps.x = 50 } // Contact: Skew slide
+            else if (i === 5) initialProps.scale = 0.5 // Status: Pop up
+
+            gsap.fromTo(card,
+                initialProps,
+                {
+                    x: 0,
+                    y: 0,
+                    opacity: 1,
+                    scale: 1,
+                    rotateX: 0,
+                    skewX: 0,
+                    duration: 0.6,
+                    ease: i === 2 ? "back.out(1.2)" : "expo.out",
+                    scrollTrigger: {
+                        trigger: card,
+                        start: "top bottom-=50",
+                        toggleActions: "play reverse play reverse"
+                    }
+                }
+            )
+        })
     }, aboutRef.value)
 })
 </script>
