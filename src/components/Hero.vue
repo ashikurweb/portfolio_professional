@@ -68,17 +68,18 @@
                             </span>
                         </button>
 
-                        <!-- Secondary Action: View Archive -->
-                        <button class="group relative py-5 px-2 overflow-hidden">
+                        <!-- Secondary Action: Download CV -->
+                        <a :href="resumeUrl" download="Ashikur_Resume.pdf"
+                            class="group relative py-5 px-2 overflow-hidden cursor-pointer">
                             <span
                                 class="text-white/40 group-hover:text-white group-hover:tracking-[0.5em] transition-all duration-500 text-xs font-bold tracking-[0.3em] uppercase">
-                                View_Archive
+                                Download_CV
                             </span>
                             <!-- Minimalist Center Underline -->
                             <div
                                 class="absolute bottom-4 left-1/2 w-0 h-[1px] bg-primary/60 -translate-x-1/2 group-hover:w-full transition-all duration-500">
                             </div>
-                        </button>
+                        </a>
                     </div>
                 </div>
 
@@ -133,6 +134,7 @@ import { onMounted, ref } from 'vue'
 import { Terminal } from 'lucide-vue-next'
 import gsap from 'gsap'
 import { TextPlugin } from 'gsap/TextPlugin'
+import resumeUrl from '@/assets/Ashikur.pdf'
 
 gsap.registerPlugin(TextPlugin)
 

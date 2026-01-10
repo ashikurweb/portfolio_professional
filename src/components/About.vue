@@ -314,7 +314,7 @@
                                         <span class="text-primary">{{ exp.company }}</span>
                                     </h5>
                                     <div
-                                        class="flex items-center gap-6 text-white/40 font-mono text-xs tracking-widest">
+                                        class="flex flex-wrap items-center gap-3 sm:gap-6 text-white/40 font-mono text-xs tracking-widest">
                                         <span class="px-3 py-1 bg-white/5 rounded-full border border-white/10 italic">{{
                                             exp.period }}</span>
                                         <span class="flex items-center gap-2">
@@ -324,7 +324,7 @@
                                     </div>
                                     <ul class="space-y-6 max-w-lg">
                                         <li v-for="(point, pIdx) in exp.points" :key="pIdx"
-                                            class="group flex gap-6 text-base text-white/40 leading-relaxed hover:text-white/80 transition-colors duration-500">
+                                            class="group flex gap-3 sm:gap-6 text-base text-white/40 leading-relaxed hover:text-white/80 transition-colors duration-500">
                                             <span
                                                 class="text-primary font-black mt-1 group-hover:translate-x-1 transition-transform inline-block">»</span>
                                             <p class="font-medium italic">{{ point }}</p>
