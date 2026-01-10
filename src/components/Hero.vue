@@ -46,25 +46,38 @@
                             Architecting <span class="text-white/60">Digital Ecosystems</span> with a focus on
                             high-fidelity performance.
                         </p>
-                        <div class="h-12 w-[1px] bg-white/10 hidden sm:block"></div>
-                        <div class="flex flex-col">
-                            <span class="text-primary text-xl sm:text-2xl font-black italic">2026</span>
-                            <span class="text-[10px] text-white/20 uppercase tracking-[0.4em] font-bold">Edition</span>
-                        </div>
                     </div>
 
-                    <div class="flex items-center gap-6 opacity-0 hero-btns-modern translate-y-10">
+                    <div class="flex flex-wrap items-center gap-8 opacity-0 hero-btns-modern translate-y-10">
+                        <!-- Primary Action: Initialize Project -->
                         <button
-                            class="group relative px-6 sm:px-10 py-3 sm:py-4 bg-primary rounded-lg overflow-hidden transition-all hover:shadow-[0_0_30px_-5px_#00D27B]">
-                            <span class="relative z-10 text-black font-black text-sm italic tracking-widest">INITIALIZE
-                                PROJECT</span>
+                            class="group relative px-12 py-5 bg-[#0a0f1e] overflow-hidden rounded-sm transition-all duration-500 border border-primary/20 hover:border-primary">
+                            <!-- Liquid Shimmer Effect -->
                             <div
-                                class="absolute inset-0 bg-white -translate-x-full group-hover:translate-x-0 transition-transform duration-500">
+                                class="absolute inset-0 bg-primary translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]">
                             </div>
+
+                            <!-- Shimmer Light -->
+                            <div
+                                class="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:animate-shimmer pointer-events-none">
+                            </div>
+
+                            <span
+                                class="relative z-10 text-white group-hover:text-black font-black text-xs italic tracking-[0.4em] uppercase transition-colors duration-500">
+                                Initialize_Project
+                            </span>
                         </button>
-                        <button
-                            class="px-5 sm:px-8 py-3 sm:py-4 text-white/40 hover:text-white font-bold transition-all text-sm tracking-widest border-b border-white/0 hover:border-white/20">
-                            // VIEW_ARCHIVE
+
+                        <!-- Secondary Action: View Archive -->
+                        <button class="group relative py-5 px-2 overflow-hidden">
+                            <span
+                                class="text-white/40 group-hover:text-white group-hover:tracking-[0.5em] transition-all duration-500 text-xs font-bold tracking-[0.3em] uppercase">
+                                View_Archive
+                            </span>
+                            <!-- Minimalist Center Underline -->
+                            <div
+                                class="absolute bottom-4 left-1/2 w-0 h-[1px] bg-primary/60 -translate-x-1/2 group-hover:w-full transition-all duration-500">
+                            </div>
                         </button>
                     </div>
                 </div>
@@ -111,17 +124,7 @@
             </div>
         </div>
 
-        <!-- Global Coordinate Data -->
-        <div class="absolute bottom-10 right-10 flex gap-10 opacity-20 hidden md:flex">
-            <div class="flex flex-col text-[10px] text-white font-mono uppercase tracking-widest">
-                <span>LAT: 23.8103</span>
-                <span>LNG: 90.4125</span>
-            </div>
-            <div class="flex flex-col text-[10px] text-white font-mono uppercase tracking-widest">
-                <span>CPU: 0.002s</span>
-                <span>RND: 73DC94C</span>
-            </div>
-        </div>
+
     </section>
 </template>
 
@@ -141,13 +144,25 @@ const cursorFollower = ref(null)
 
 onMounted(() => {
     const ctx = gsap.context(() => {
-        const tl = gsap.timeline({ defaults: { ease: 'power4.out', duration: 1.5 } })
+        // Initial States - Hide everything
+        gsap.set(['.hero-visual', '.hero-meta', '.hero-btns-modern'], { opacity: 0, y: 30 })
+        gsap.set('.hero-visual', { x: 40, y: 0 })
+        gsap.set('.title-word, .title-word-outline', { y: "110%" })
 
-        // Initial Reveal
-        tl.to('.hero-badge-modern', { opacity: 1, y: 0, duration: 1 })
-            .to('.hero-visual', { opacity: 1, x: 0, duration: 2 }, '-=0.5')
-            .to('.hero-meta', { opacity: 1, y: 0 }, '-=1.5')
-            .to('.hero-btns-modern', { opacity: 1, y: 0 }, '-=1.3')
+        // Entrance Animation Triggered by Preloader
+        window.addEventListener('preloaderComplete', () => {
+            const tl = gsap.timeline({ defaults: { ease: 'expo.out', duration: 1.5 } })
+
+            tl.to('.hero-visual', { opacity: 1, x: 0, duration: 2 })
+                .to('.title-word, .title-word-outline', {
+                    y: 0,
+                    stagger: 0.1,
+                    duration: 1.2,
+                    ease: "expo.out"
+                }, "-=1.5")
+                .to('.hero-meta', { opacity: 1, y: 0 }, "-=1.2")
+                .to('.hero-btns-modern', { opacity: 1, y: 0 }, "-=1")
+        })
 
         // Professional Typing Sequence (Smooth & Looping)
         const typeTl = gsap.timeline({ repeat: -1 })
@@ -242,5 +257,24 @@ onMounted(() => {
 
 .noise-bg {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3e%3cfilter id='noiseFilter'%3e%3cfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3e%3c/filter%3e%3crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3e%3c/svg%3e");
+}
+
+/* Luxury Hero Button Animations */
+@keyframes shimmer {
+    0% {
+        transform: skewX(-12deg) translateX(-100%);
+    }
+
+    100% {
+        transform: skewX(-12deg) translateX(300%);
+    }
+}
+
+.animate-shimmer {
+    animation: shimmer 1.5s ease-out infinite;
+}
+
+.hero-btn-primary:hover {
+    box-shadow: 0 10px 40px -10px rgba(0, 210, 123, 0.4);
 }
 </style>

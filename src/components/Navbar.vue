@@ -4,7 +4,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div ref="containerRef" class="flex justify-between items-center h-24">
                 <!-- Logo Section -->
-                <div class="flex items-center">
+                <div class="flex items-center logo-brand opacity-0">
                     <a href="#" class="block transform hover:scale-105 transition-transform duration-300">
                         <Logo />
                     </a>
@@ -14,7 +14,7 @@
                 <div class="hidden md:flex items-center gap-10">
                     <nav class="flex gap-8">
                         <a v-for="link in navLinks" :key="link.name" :href="link.href"
-                            class="text-sm font-semibold relative group py-2 transition-colors duration-300"
+                            class="nav-item opacity-0 text-sm font-semibold relative group py-2 transition-colors duration-300"
                             :class="activeSection === link.name ? 'text-primary' : 'text-gray-400 hover:text-primary'">
                             {{ link.name }}
                             <span
@@ -22,26 +22,33 @@
                                 :class="activeSection === link.name ? 'w-full' : 'w-0'"></span>
                         </a>
                     </nav>
-                    <button ref="hireBtnRef" class="hire-btn-modern relative group perspective-1000">
-                        <!-- Animated Border Gradient -->
-                        <div
-                            class="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_100%] animate-gradient-shift opacity-70 group-hover:opacity-100 transition-opacity">
-                        </div>
-                        <div class="absolute inset-[2px] rounded-full bg-dark z-10"></div>
+                    <div class="hire-btn-wrapper opacity-0">
+                        <button ref="hireBtnRef"
+                            class="hire-btn-elite relative group px-8 py-3 rounded-full transition-all duration-500">
+                            <!-- Always Rotating Border -->
+                            <div class="absolute inset-0 rounded-full border border-primary/20"></div>
+                            <div class="absolute inset-0 rounded-full overflow-hidden">
+                                <div
+                                    class="absolute inset-[-100%] bg-[conic-gradient(from_0deg,transparent,var(--color-primary),transparent_30%)] animate-border-spin">
+                                </div>
+                            </div>
 
-                        <!-- Button Content -->
-                        <span
-                            class="relative z-20 block px-8 py-3 font-black text-primary group-hover:text-white transition-colors duration-300">
-                            <span class="hire-text-wrapper inline-block" :class="{ 'glitch-active': isGlitching }">
-                                {{ hireButtonText }}
-                            </span>
-                        </span>
+                            <!-- Inner Content Backdrop -->
+                            <div class="absolute inset-[1.5px] bg-[#0a0f1e] rounded-full z-10"></div>
 
-                        <!-- Hover Glow Effect -->
-                        <div
-                            class="absolute inset-0 rounded-full bg-primary/20 blur-xl scale-0 group-hover:scale-150 transition-transform duration-700 -z-10">
-                        </div>
-                    </button>
+                            <!-- Button Content -->
+                            <div class="relative z-20 flex items-center gap-3 whitespace-nowrap">
+                                <span
+                                    class="text-sm font-bold tracking-[0.2em] text-white group-hover:text-primary uppercase transition-colors duration-300">
+                                    {{ hireButtonText }}
+                                </span>
+                                <!-- Small Animated Icon -->
+                                <div
+                                    class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shadow-[0_0_8px_var(--color-primary)]">
+                                </div>
+                            </div>
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Mobile Toggle -->
@@ -265,77 +272,77 @@ onMounted(() => {
         currentIndex = (currentIndex + 1) % phrases.length
     }
 
+    // Entrance Animation on Preloader Complete
+    window.addEventListener('preloaderComplete', () => {
+        const tl = gsap.timeline({ defaults: { ease: 'expo.out', duration: 1.2 } })
+
+        gsap.set('.nav-item', { y: -20, opacity: 0 })
+        gsap.set('.logo-brand', { x: -30, opacity: 0 })
+        gsap.set('.hire-btn-wrapper', { scale: 0.8, opacity: 0 })
+
+        tl.to('.logo-brand', { x: 0, opacity: 1 }, "+=0.2")
+            .to('.nav-item', { y: 0, opacity: 1, stagger: 0.1 }, "-=0.8")
+            .to('.hire-btn-wrapper', { scale: 1, opacity: 1, ease: 'back.out(1.7)' }, "-=0.6")
+    })
+
+    // Magnetic Effect for Hire Button
+    const hireBtn = hireBtnRef.value
+    if (hireBtn) {
+        hireBtn.addEventListener('mousemove', (e) => {
+            const rect = hireBtn.getBoundingClientRect()
+            const x = e.clientX - rect.left - rect.width / 2
+            const y = e.clientY - rect.top - rect.height / 2
+
+            gsap.to(hireBtn, {
+                x: x * 0.3,
+                y: y * 0.3,
+                duration: 0.5,
+                ease: "power2.out"
+            })
+        })
+
+        hireBtn.addEventListener('mouseleave', () => {
+            gsap.to(hireBtn, {
+                x: 0,
+                y: 0,
+                duration: 1,
+                ease: "elastic.out(1, 0.3)"
+            })
+        })
+    }
+
     // Start animation after 2 seconds, then repeat every 4 seconds
     gsap.delayedCall(2, () => {
         typePhrase()
-        gsap.ticker.add(() => { }, 4)
         setInterval(typePhrase, 4000)
     })
 })
 </script>
 
 <style scoped>
-/* Modern Hire Button Styles */
-.hire-btn-modern {
-    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+/* Elite Hire Button Styles */
+.hire-btn-elite {
+    background: transparent;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.hire-btn-modern:hover {
-    transform: translateY(-2px) scale(1.05);
+.hire-btn-elite:hover {
+    box-shadow: 0 0 30px rgba(0, 210, 123, 0.15);
 }
 
-.hire-btn-modern:active {
-    transform: translateY(0) scale(0.98);
-}
-
-/* Animated Gradient Shift */
-@keyframes gradient-shift {
-    0% {
-        background-position: 0% 50%;
+@keyframes border-spin {
+    from {
+        transform: rotate(0deg);
     }
 
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
+    to {
+        transform: rotate(360deg);
     }
 }
 
-.animate-gradient-shift {
-    animation: gradient-shift 3s ease infinite;
-}
-
-/* Glitch Effect */
-.glitch-active {
-    animation: glitch 0.3s ease;
-}
-
-@keyframes glitch {
-    0% {
-        transform: translate(0);
-    }
-
-    20% {
-        transform: translate(-2px, 2px);
-    }
-
-    40% {
-        transform: translate(-2px, -2px);
-    }
-
-    60% {
-        transform: translate(2px, 2px);
-    }
-
-    80% {
-        transform: translate(2px, -2px);
-    }
-
-    100% {
-        transform: translate(0);
-    }
+.animate-border-spin {
+    animation: border-spin 3s linear infinite;
 }
 
 .perspective-1000 {
